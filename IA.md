@@ -2,6 +2,7 @@ Herramienta utilizada: ChatGPT
 Fecha: 29-03-20256
 Prompt utilizado: Ayudame a guiarme para hacer un index.html de un login. Con una estructura fácil de aprender para mi.
 Resultado generado: 
+<!-- Resultado IA.
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -22,6 +23,7 @@ Resultado generado:
     </div>
 </body>
 </html>
+-->
 
 Modificaciones realizadas: 
 - Vinculé una hoja de estilos externa
@@ -115,14 +117,14 @@ Justificación:
 Herramienta utilizada: ChatGPT 
 Fecha: 29-03-2026
 Prompt utilizado: crees que deba cambiar algo de mi codigo? 
+<!-- Mi codigo
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <!-- CSS externo -->
-    <link rel="stylesheet" href="Style.Css"> 
-</head>
+    <link rel="stylesheet" href="Style.Css">
+    </head>
 <body>
     <div class="login-container">
         <div class="logo-box">
@@ -147,9 +149,11 @@ Prompt utilizado: crees que deba cambiar algo de mi codigo?
         <button type="button" class="btn-registrarse">Registrarse</button>
     </div>
 </body>
-</html>       
+</html>
+-->    
 
 Resultado generado: 
+<!-- Resultado IA
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -185,6 +189,7 @@ Resultado generado:
 
 </body>
 </html>
+--> 
 
 Modificaciones realizadas: Ninguna
 Justificación: A mi parecer mi codigo ya estaba funcional tal cuál estaba, así preferí no cambiar nada según lo que me dió la IA.

@@ -2,28 +2,28 @@ Herramienta utilizada: ChatGPT
 Fecha: 29-03-20256
 Prompt utilizado: Ayudame a guiarme para hacer un index.html de un login. Con una estructura fácil de aprender para mi.
 Resultado generado: 
-<!-- Resultado IA.
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-</head>
-<body>
-    <div class="login-container">
-        <img src="logo.png" alt="Logo" class="logo">
-        <form>
-            <h2>Iniciar Sesión</h2>
-            <label>Usuario:</label>
-            <input type="text" placeholder="Ingresa tu usuario">
-            <label>Contraseña:</label>
-            <input type="password" placeholder="Ingresa tu contraseña">
-            <button type="submit">Ingresar</button>
-        </form>
-    </div>
-</body>
-</html>
--->
+
+.!DOCTYPE html>
+.html lang="es">
+.head>
+    .meta charset="UTF-8">
+    .title>Login</title>
+./head>
+.body>
+    .div class="login-container">
+        .img src="logo.png" alt="Logo" class="logo">
+        .form>
+            .h2>Iniciar Sesión</h2>
+            .label>Usuario:</label>
+            .input type="text" placeholder="Ingresa tu usuario">
+            .label>Contraseña:</label>
+            .input type="password" placeholder="Ingresa tu contraseña">
+            .button type="submit">Ingresar</button>
+        ./form>
+    ./div>
+./body>
+./html>
+
 
 Modificaciones realizadas: 
 - Vinculé una hoja de estilos externa
@@ -117,79 +117,76 @@ Justificación:
 Herramienta utilizada: ChatGPT 
 Fecha: 29-03-2026
 Prompt utilizado: crees que deba cambiar algo de mi codigo? 
-<!-- Mi codigo
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-    <link rel="stylesheet" href="Style.Css">
-    </head>
-<body>
-    <div class="login-container">
-        <div class="logo-box">
-            <img src="logo_empresa_letra_v1.png" alt="Logo SportClub">
-        </div>
-        <h2>Acceso</h2>
-        <form>
-            <div class="grupo-input">
-                <label for="correo">Correo</label>
-                <input type="email" id="correo" placeholder="Ingrese su correo" required>
-            </div>
-            <div class="grupo-input">
-                <label for="password">Contraseña</label>
-                <input type="password" id="password" placeholder="Ingrese su contraseña" required>
-            </div>
-            <button type="submit">Ingresar</button>
-        </form>
-        <nav>
-            <a href="#">¿Olvidaste tu contraseña?</a>
-        </nav>
-        <hr>
-        <button type="button" class="btn-registrarse">Registrarse</button>
-    </div>
-</body>
-</html>
--->    
+.!DOCTYPE html>
+.html lang="es">
+.head>
+    .meta charset="UTF-8">
+    .title>Login</title>
+    .link rel="stylesheet" href="Style.Css">
+    ./head>
+.body>
+    .div class="login-container">
+        .div class="logo-box">
+            .img src="logo_empresa_letra_v1.png" alt="Logo SportClub">
+        ./div>
+        .h2>Acceso</h2>
+        .form>
+            .div class="grupo-input">
+                .label for="correo">Correo</label>
+                .input type="email" id="correo" placeholder="Ingrese su correo" required>
+            ./div>
+            .div class="grupo-input">
+                .label for="password">Contraseña</label>
+                .input type="password" id="password" placeholder="Ingrese su contraseña" required>
+            ./div>
+            .button type="submit">Ingresar</button>
+        ./form>
+        .nav>
+            .a href="#">¿Olvidaste tu contraseña?</a>
+        ./nav>
+        .hr>
+        .button type="button" class="btn-registrarse">Registrarse</button>
+    ./div>
+./body>
+./html>
+   
 
 Resultado generado: 
-<!-- Resultado IA
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <main>
-        <div class="login-container">
-            <div class="logo-box">
-                <img src="logo_empresa_letra_v1.png" alt="Logo de SportClub">
-            </div>
-            <h2>Acceso</h2>
-            <form action="#" method="POST">
-                <div class="grupo-input">
-                    <label for="correo">Correo</label>
-                    <input type="email" id="correo" name="correo" placeholder="ejemplo@correo.com" required>
-                </div>
-                <div class="grupo-input">
-                    <label for="password">Contraseña</label>
-                    <input type="password" id="password" name="password" placeholder="Ingrese su contraseña" required>
-                </div>
-                <button type="submit">Ingresar</button>
-            </form>
-            <nav>
-                <a href="#">¿Olvidaste tu contraseña?</a>
-            </nav>
-            <hr>
-            <button type="button" class="btn-registrarse">Registrarse</button>
-        </div>
-    </main>
+.!DOCTYPE html>
+.html lang="es">
+.head>
+    .meta charset="UTF-8">
+    .title>Login</title>
+    .link rel="stylesheet" href="style.css">
+./head>
+.body>
+    .main>
+        .div class="login-container">
+            .div class="logo-box">
+                .img src="logo_empresa_letra_v1.png" alt="Logo de SportClub">
+            ./div>
+            .h2>Acceso</h2>
+            .form action="#" method="POST">
+                .div class="grupo-input">
+                    .label for="correo">Correo</label>
+                    .input type="email" id="correo" name="correo" placeholder="ejemplo@correo.com" required>
+                ./div>
+                .div class="grupo-input">
+                    .label for="password">Contraseña</label>
+                    .input type="password" id="password" name="password" placeholder="Ingrese su contraseña" required>
+                ./div>
+                .button type="submit">Ingresar</button>
+            ./form>
+            .nav>
+                .a href="#">¿Olvidaste tu contraseña?</a>
+            ./nav>
+            .hr>
+            .button type="button" class="btn-registrarse">Registrarse</button>
+        ./div>
+    ./main>
+./body>
+./html>
 
-</body>
-</html>
---> 
 
 Modificaciones realizadas: Ninguna
 Justificación: A mi parecer mi codigo ya estaba funcional tal cuál estaba, así preferí no cambiar nada según lo que me dió la IA.

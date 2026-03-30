@@ -7,33 +7,25 @@
     <link rel="stylesheet" href="Style.Css"> 
 </head>
 <body>
-    <div class="login-container">
-        <div class="logo-box">
-            <img src="logo_empresa_letra_v1.png" alt="Logo SportClub">
-        </div>   
-        <h2>Acceso</h2>
-        <form>
-            <div class="grupo-input">
-                <label for="correo">Correo</label>
-                <input type="email" id="correo" placeholder="Ingrese su correo" required>
-            </div>
-            <div class="grupo-input">
-                <label for="password">Contraseña</label>
-                <input type="password" id="password" placeholder="Ingrese su contraseña" required>
-            </div>
-
+    <main class = "login-container">
+        <img src="logo_empresa_letra_v1.png" alt="Logo de la Empresa" class="logo">
+        <h1>Iniciar Sesión</h1>
+        <form action="#" method="post" class="login-form">
+            <label for="username">Correo:</label>
+            <input type="text" id="username" placeholder="Ingrese su correo" required>
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" placeholder="Ingrese su contraseña" required>
             <button type="submit">Ingresar</button>
-        </form>
-        
-        <nav>
-            <a href="#">¿Olvidaste tu contraseña?</a>
-        </nav>
-        
-        <hr>
+            <nav>
+                <a href="#">¿Olvidaste tu contraseña?</a>
+            </nav>
+            <hr>
+            <button type="button" class="btn-registrarse">Registrarse</button>
 
-        <button type="button" class="btn-registrarse">Registrarse</button>
-    </div>
+        </form>
+    </main>
 </body>
 </html>
-            
+    
+
 

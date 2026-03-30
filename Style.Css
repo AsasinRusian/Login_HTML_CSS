@@ -1,5 +1,5 @@
 body {
-    background-color: #f5f5f5;
+    background-color: #97913c;
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
@@ -12,36 +12,27 @@ body {
     background-color: #ffffff;
     width: 320px;
     padding: 30px;
-    border: 2px solid #3b0066;
+    border: 2px solid #3b0066; /* borde morado */
     text-align: center;
     border-radius: 6px;
 }
 
-.logo-box {
-    margin: 0 auto 20px auto;
-    width: fit-content;
-}
-
-.logo-box img {
+.logo {
     max-width: 220px;
     height: auto;
     display: block;
-    margin: 0 auto;
+    margin: 0 auto 20px auto;
 }
 
-h2 {
-    margin-bottom: 25px;
-    font-weight: normal;
+h1 {
+    text-align: center;
     color: #3b0066;
-}
-
-.grupo-input {
-    text-align: left;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 label {
     display: block;
+    text-align: left;
     margin-bottom: 5px;
     font-size: 14px;
     color: #333333;
@@ -51,17 +42,18 @@ input {
     width: 100%;
     padding: 10px;
     border: 1px solid #3b0066;
-    border-radius: 6px; 
-    box-sizing: border-box; 
+    border-radius: 6px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
 }
 
 button {
     width: 70%;
     padding: 10px;
     margin: 10px 0;
-    background-color: #ffd700;
+    background-color: #ffd700; /* amarillo */
     border: none;
-    border-radius: 6px; 
+    border-radius: 6px;
     cursor: pointer;
     font-weight: bold;
     color: #3b0066;
@@ -69,12 +61,6 @@ button {
 
 button:hover {
     background-color: #f5d742;
-}
-
-hr {
-    border: 0;
-    border-top: 1px solid #3b0066;
-    margin: 20px 0;
 }
 
 nav {
@@ -91,9 +77,10 @@ nav a:hover {
     text-decoration: underline;
 }
 
-.separador {
-    margin: 0 10px;
-    color: #333333;
+hr {
+    border: 0;
+    border-top: 1px solid #3b0066;
+    margin: 20px 0;
 }
 
 .btn-registrarse {

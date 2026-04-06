@@ -192,3 +192,7 @@ Modificaciones realizadas: Ninguna
 Justificación: A mi parecer mi codigo ya estaba funcional tal cuál estaba, así preferí no cambiar nada según lo que me dió la IA.
 
 
+Herramienta utilizada: ChatGPT 
+Fecha: 05-04-2026
+Prompt utilizado: Me puedes enseñar a usar bootstrap para mostrar un mensaje de confirmación de envío. Con ejemplo.
+https://chatgpt.com/share/69d307c9-274c-83e9-8be1-0074352be2a2

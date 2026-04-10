@@ -9,14 +9,15 @@
 <body>
     <main class="login-container">
         <img src="logo_empresa_letra_v1.png" alt="Logo" class="logo">
-        <h2>Recuperar</h2>
+        <h1>Recupera tu acceso</h1>
+        <h2>Te enviaremos un enlace para restablecer tu contraseña. Revisa tu bandeja de entrada y spam.</h2>
         <form id="form">
             <label>Correo Electrónico</label>
-            <input type="email" placeholder="Ingrese su correo." required>
+            <input type="email" placeholder="nombre@correo.com" required>
             <button type="submit">Enviar Enlace</button>
         </form>
         <div id="msg" class="alert alert-success mt-3 d-none">Enlace enviado con éxito.</div>
-        <nav><a href="index.html">Volver al login</a></nav>
+        <nav><a href="login.html">Volver al login</a></nav>
     </main>
     <script>
         document.getElementById('form').addEventListener('submit', function(e) {

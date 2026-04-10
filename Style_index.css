@@ -1,0 +1,135 @@
+
+:root {
+    --morado: #2E1A47;
+    --dorado: #F2B705;
+    --blanco: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #a17b0ac2;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.landing-card {
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('gym.jpg'); 
+    background-size: cover;
+    background-position: center;
+    width: 1000px;
+    max-width: 95%;
+    border: 8px solid var(--dorado); 
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    overflow: hidden; 
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+}
+
+.logo-main {
+    width: 444px;
+    margin-bottom: 15px;
+}
+
+.banner-title {
+    background-color: rgba(46, 26, 71, 0.9); 
+    color: var(--blanco);
+    padding: 20px;
+    border-top: 2px solid var(--dorado);
+    border-bottom: 2px solid var(--dorado);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.banner-title p {
+    font-size: 40px; 
+    font-weight: bold;
+    color: var(--blanco);
+    margin-bottom: 5px; 
+    text-align: center; 
+    font-family:sans-serif
+}
+
+.banner-title h1 {
+    font-size: 24px; 
+    font-weight: 800;
+    color: var(--blanco);
+    margin: 0;
+    text-align: center; 
+    font-family: sans-serif
+}
+
+p {
+    font-size: 16px; 
+    line-height: 1.6;
+    margin-bottom: 15px;
+    
+}
+
+section.grid-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    padding: 25px;
+}
+
+article {
+    background-color: rgba(46, 26, 71, 0.75); 
+    backdrop-filter: blur(8px); 
+    padding: 25px;
+    border-radius: 12px;
+    color: var(--blanco);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+h2, h3 {
+    color: var(--dorado);
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+article p {
+    text-align: left; 
+    font-family: sans-serif;
+
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding-bottom: 40px;
+}
+
+.btn-nav {
+    background-color: var(--morado);
+    color: var(--blanco);
+    border: 2px solid var(--dorado);
+    padding: 12px 40px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.3s ease;
+}
+
+.btn-nav:hover {
+    background-color: var(--dorado);
+    color: var(--morado);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}

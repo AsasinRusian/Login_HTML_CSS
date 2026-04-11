@@ -6,7 +6,7 @@
 }
 
 body {
-    background-color: #a17b0ac2; 
+    background-color: #a17b0ae8; 
     font-family: 'Segoe UI', Arial, sans-serif;
     display: flex;
     justify-content: center;
@@ -40,6 +40,15 @@ h1 {
 }
 
 h2 {
+    color: #251144;
+    font-weight: 400;
+    margin-bottom: 25px;
+    font-size: 29px;
+    text-align: center;
+
+}
+
+h5{
     color: #000000;
     font-weight: 400;
     margin-bottom: 25px;
@@ -114,3 +123,4 @@ hr {
     border-top: 1px solid #3b0066;
     margin: 15px 0;
 }
+

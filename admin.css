@@ -1,0 +1,123 @@
+:root {
+    --morado-admin: #2E1A47;
+    --rojo-admin: #B22222; 
+    --blanco: #FFFFFF;
+}
+
+body {
+    background-color: #a17b0ae8;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    min-height: 100vh;
+}
+
+
+header.box-header {
+    background-color:  rgb(155 0 0 / 94%);
+    border-bottom: 5px solid var(--rojo-admin);
+    padding: 1rem 40px;
+}
+
+#btnEditarPerfil.btn-outline-custom {
+    background-color: transparent !important;
+    border: 1px solid #ffffff !important;
+    color: #ffffff !important;
+    font-size: 13px !important;
+    padding: 5px 15px !important;
+    border-radius: 6px !important;
+}
+
+header .btn-gold-sm {
+    background-color: #ffffff !important;
+    color: var(--rojo-admin) !important;
+    border: 1px solid #ffffff !important;
+    font-size: 13px !important;
+    padding: 5px 15px !important;
+    border-radius: 6px !important;
+    text-decoration: none;
+}
+
+nav.box-nav {
+    background-color: #480f67;
+    padding: 10px 5%;
+}
+
+nav.box-nav a { 
+    color: white;
+    text-decoration: none; 
+    font-weight: bold; 
+    margin-right: 25px; }
+
+.content-area { padding: 2rem 5% !important; }
+
+.welcome-title {
+     color: rgb(255, 255, 255) !important; 
+     font-weight: 700; 
+     font-size: 2rem; 
+     margin-bottom: 35px; }
+
+.admin-welcome { color: black !important; font-weight: 500; font-size: 1rem; margin-bottom: 30px; }
+
+
+.card-dash {
+    background-color: #480f67;
+    border-top: 6px solid #b92309b5;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    height: 100%;
+    color : #fffafa;
+}
+
+.card-dash h3 {
+    color: #fffafa !important;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+
+.btn-action {
+    background-color: var(--rojo-admin);
+    color: white;
+    border: none;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+
+.table thead th { background-color: #f8f9fa !important; color: #333 !important; font-size: 12px; }
+
+
+.modal-text-custom { font-size: 13px !important; }
+
+.logo {
+    width: 220px;
+    height: auto;
+}
+
+
+.theme-admin .modal-title {
+    color: #F2B705 !important; 
+    font-size: 0.95rem !important;
+    letter-spacing: 0.5px;
+}
+
+.theme-admin .modal-footer .btn-danger {
+    background-color: #F2B705 !important;
+    border-color: #F2B705 !important;
+    color: #2E1A47 !important; 
+    font-weight: bold;
+    font-size: 12px !important;
+    padding: 8px;
+}
+
+
+.border-danger {
+    --bs-border-opacity: 1;
+    border-color: rgb(207 220 53) !important;
+}

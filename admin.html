@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard Admin - SportClub</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body class="theme-admin">
+
+    <script>
+        // Seguridad: Solo administradores pueden entrar
+        const session = JSON.parse(sessionStorage.getItem('sc_user') || 'null');
+        if (!session || session.role !== 'admin') window.location.href = 'login.html';
+    </script>
+
+    <main class="main-box">
+        <header class="box-header d-flex justify-content-between align-items-center">
+            <img src="logo_empresa_letra_v1.png" alt="Logo" class="logo">
+            <h2 class="m-0 h5 text-white fw-bold">Dashboard Admin</h2>
+            <section class="d-flex gap-2">
+                <button type="button" id="btnEditarPerfil" class="btn-outline-custom">Editar Perfil</button>
+                <a href="index.html" class="btn-gold-sm">Cerrar Sesión</a>
+            </section>
+        </header>
+
+        <nav class="box-nav">
+            <a href="#">Inicio</a>
+            <a href="#">Usuarios</a>
+            <a href="#">Estadísticas</a>
+            <a href="#">Configuración</a>
+        </nav>
+
+        <section class="content-area">
+            <h2 class="welcome-title">Panel de Administración</h2>
+            
+            <section class="row g-4">
+                <article class="col-md-3">
+                    <section class="card-dash">
+                        <h3>Gestión de Usuarios</h3>
+                        <div class="mb-3">
+                            <input type="text" class="form-control form-control-sm" placeholder="Buscar...">
+                        </div>
+                        <ul class="list-unstyled small">
+                            <li class="d-flex justify-content-between align-items-center mb-2">
+                                <span>Nombre</span> <button class="btn-action">Editar</button>
+                            </li>
+                            <li class="d-flex justify-content-between align-items-center mb-2">
+                                <span>Email</span> <button class="btn-action">Editar</button>
+                            </li>
+                            <li class="d-flex justify-content-between align-items-center">
+                                <span>Rol</span> <button class="btn-action">Editar</button>
+                            </li>
+                        </ul>
+                    </section>
+                </article>
+
+                <article class="col-md-6">
+                    <section class="card-dash">
+                        <h3>Estadísticas del Sistema</h3>
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Email</th>
+                                        <th>Rol</th>
+                                        <th>Acción</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="small">
+                                    <tr>
+                                        <td>Usuario 1</td>
+                                        <td>user1@mail.com</td>
+                                        <td>Socio</td>
+                                        <td><button class="btn-action">Editar</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Coach A</td>
+                                        <td>coach@mail.com</td>
+                                        <td>Coach</td>
+                                        <td><button class="btn-action">Editar</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                </article>
+
+                <article class="col-md-3">
+                    <section class="card-dash mb-4">
+                        <h3>Reportes Generales</h3>
+                        <div class="d-flex justify-content-between align-items-center mb-2 small">
+                            <span>Informe Mensual</span>
+                            <button class="btn-action">Descargar</button>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center small">
+                            <span>Abril</span>
+                            <button class="btn-action">Descargar</button>
+                        </div>
+                    </section>
+                    
+                    <section class="card-dash">
+                        <div class="d-flex align-items-center gap-2">
+                            <span class="fs-4">⚙️</span>
+                            <span class="fw-bold small">Configurar...</span>
+                        </div>
+                    </section>
+                </article>
+            </section>
+        </section>
+    </main>
+
+    <div class="modal fade" id="modalProximamente" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark border-danger">
+            <div class="modal-header border-danger text-danger">
+                <h5 class="modal-title fw-bold">SportClub Informa</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-white text-center py-4">
+                <p class="fw-bold mb-2" style="font-size: 1.2rem;">¡Hola, Admin!</p> 
+                <p class="modal-text-custom">La configuración avanzada estará <strong>disponible pronto</strong>.</p>
+            </div>
+            <div class="modal-footer border-0">
+                <button type="button" class="btn btn-danger btn-sm w-100" data-bs-dismiss="modal">Entendido</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const btnEditar = document.getElementById('btnEditarPerfil');
+        const modalElement = new bootstrap.Modal(document.getElementById('modalProximamente'));
+        btnEditar.addEventListener('click', () => modalElement.show());
+    </script>
+</body>
+</html>

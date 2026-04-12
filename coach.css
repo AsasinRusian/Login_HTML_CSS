@@ -1,0 +1,151 @@
+body {
+    background-color: #a17b0ae8;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    min-height: 100vh;
+}
+
+.theme-coach {
+    --accent-color: #1a5928;
+}
+
+header {
+    background-color: #1a5928;
+    border-bottom: 5px solid rgb(2, 70, 2);
+    padding: 1rem !important;
+}
+
+
+#btnEditarPerfil.btn-outline-custom {
+    background-color: transparent !important;
+    border: 1px solid #ffffff !important;
+    color: #ffffff !important;
+    font-size: 13px !important;
+    padding: 5px 15px !important;
+    border-radius: 6px !important;
+    font-weight: 500 !important;
+    transition: 0.3s;
+}
+
+header .btn-gold-sm {
+    background-color: #ffffff !important;
+    color: var(--accent-color) !important;
+    border: 1px solid #ffffff !important;
+    font-size: 13px !important;
+    padding: 5px 15px !important;
+    border-radius: 6px !important;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+
+nav {
+    background-color: #bb971aed;
+    padding: 10px 5%;
+    display: flex; gap: 20px;
+} 
+
+nav a { 
+    color: #f8f8f8; 
+    text-decoration: none; 
+    font-weight: bold; 
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+     text-decoration: underline; 
+}
+
+.content-area {
+    padding: 2rem 5% !important; 
+}
+
+.theme-coach .welcome-title {
+    color: rgb(255, 255, 255) !important;
+    font-weight: 700;
+    font-size: 2.2rem;
+    margin-bottom: 5px;
+}
+
+.coach-welcome {
+    color: rgb(255, 255, 255) !important;
+    font-weight: 500;
+    font-size: 1.6rem;
+    margin-bottom: 30px;
+}
+
+.theme-coach .main-box {
+    border-color: var(--accent-color);
+}
+
+.theme-coach .box-nav a {
+    color: white;
+}
+
+.card-dash {
+    background-color: #296b20d9; 
+    border-top: 6px solid #97a109; 
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+    height: 100%;
+    color: rgb(247, 247, 247);
+}
+
+.theme-coach .card-dash h3 {
+    color: rgb(255, 250, 250) !important; 
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.table-custom {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #eee;
+}
+
+.btn-gold-sm {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 6px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.theme-coach .table thead th {
+    background-color: var(--accent-color) !important;
+    color: white !important; 
+}
+
+.logo {
+    width: 220px;
+    height: auto;
+}
+
+.h5-mb4 {
+    margin-bottom: 1.5rem !important;
+    color: black;
+}
+
+
+.modal-text-custom {
+    font-size: 13px !important; 
+    margin-bottom: 5px;
+    line-height: 1.4;
+}
+
+.modal-title {
+    font-size: 0.90rem !important;
+    letter-spacing: 0.5px;
+}
+
+.modal-footer .btn {
+    font-size: 12px !important;
+    padding: 6px 12px;
+}

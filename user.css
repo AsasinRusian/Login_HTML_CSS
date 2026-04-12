@@ -9,7 +9,7 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    background-color: #daa405;
+    background-color: #a17b0ae8;
     font-family: 'Segoe UI', Arial, sans-serif;
     min-height: 100vh;
 }
@@ -48,8 +48,7 @@ nav.main-nav a:hover {
 
 .mb-4 { 
     margin-bottom: 1.5rem !important; 
-    color: var(--blanco); 
-    text-shadow: 2px 2px 4px var(--morado-corporativo);
+    color: rgb(255, 255, 255); 
     font-weight: 500;
 }
 
@@ -60,6 +59,7 @@ nav.main-nav a:hover {
     backdrop-filter: blur(10px); 
     border: 2px solid rgba(24, 21, 179, 0.699);
     border-radius: 12px;
+    border-top: #361753 solid 4px;
     color: var(--blanco);
     box-shadow: 0 8px 32px rgba(0,0,0,0.3);
 }
@@ -67,6 +67,7 @@ nav.main-nav a:hover {
 .card-dash h3 {
     border-color: var(--accent-color) !important;
 }
+
 
 
 .circulo-progreso {
@@ -77,8 +78,9 @@ nav.main-nav a:hover {
     margin: 15px auto;
     display: flex; align-items: center; justify-content: center;
     font-weight: bold; font-size: 20px;
-    color: w;
+    color: var(--blanco); 
 }
+
 
 .btn-dorado {
     background-color: var(--dorado-corporativo);
@@ -107,7 +109,10 @@ nav.main-nav a:hover {
 .text-muted {
     color: rgb(255, 255, 255) !important;
     font-size: 14px;
+    font-style: italic;
+
 }
+
 
 .text-white {
     color: var(--blanco) !important;
@@ -117,6 +122,23 @@ nav.main-nav a:hover {
 }
 
 .logo {
-    width: 200px;
+    width: 220px;
     height: auto;
+}
+
+.modal-text-custom {
+    font-size: 14px !important; 
+    margin-bottom: 5px;
+    line-height: 1.4;
+}
+
+
+.modal-title {
+    font-size: 0.95rem !important;
+    letter-spacing: 0.5px;
+}
+
+.modal-footer .btn {
+    font-size: 12px !important;
+    padding: 8px;
 }

@@ -10,7 +10,6 @@ body {
     min-height: 100vh;
 }
 
-
 header.box-header {
     background-color:  rgb(155 0 0 / 94%);
     border-bottom: 5px solid var(--rojo-admin);
@@ -45,7 +44,8 @@ nav.box-nav a {
     color: white;
     text-decoration: none; 
     font-weight: bold; 
-    margin-right: 25px; }
+    margin-right: 25px; 
+}
 
 .content-area { padding: 2rem 5% !important; }
 
@@ -53,10 +53,10 @@ nav.box-nav a {
      color: rgb(255, 255, 255) !important; 
      font-weight: 700; 
      font-size: 2rem; 
-     margin-bottom: 35px; }
+     margin-bottom: 35px; 
+}
 
 .admin-welcome { color: black !important; font-weight: 500; font-size: 1rem; margin-bottom: 30px; }
-
 
 .card-dash {
     background-color: #480f67;
@@ -78,7 +78,6 @@ nav.box-nav a {
     margin-bottom: 15px;
 }
 
-
 .btn-action {
     background-color: var(--rojo-admin);
     color: white;
@@ -89,9 +88,7 @@ nav.box-nav a {
     font-weight: bold;
 }
 
-
 .table thead th { background-color: #f8f9fa !important; color: #333 !important; font-size: 12px; }
-
 
 .modal-text-custom { font-size: 13px !important; }
 
@@ -99,7 +96,6 @@ nav.box-nav a {
     width: 220px;
     height: auto;
 }
-
 
 .theme-admin .modal-title {
     color: #F2B705 !important; 
@@ -115,7 +111,6 @@ nav.box-nav a {
     font-size: 12px !important;
     padding: 8px;
 }
-
 
 .border-danger {
     --bs-border-opacity: 1;

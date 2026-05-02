@@ -5,14 +5,14 @@
 }
 
 body {
-    background-color: #a17b0ae8;
+    background-color: #ffffffe8;
     font-family: 'Segoe UI', Arial, sans-serif;
     min-height: 100vh;
 }
 
 header.box-header {
-    background-color:  rgb(155 0 0 / 94%);
-    border-bottom: 5px solid var(--rojo-admin);
+    background-color: rgb(31 5 51 / 94%);
+    border-bottom: 5px solid #7422b2;
     padding: 1rem 40px;
 }
 
@@ -27,7 +27,7 @@ header.box-header {
 
 header .btn-gold-sm {
     background-color: #ffffff !important;
-    color: var(--rojo-admin) !important;
+    color: #000000 !important;
     border: 1px solid #ffffff !important;
     font-size: 13px !important;
     padding: 5px 15px !important;
@@ -50,7 +50,7 @@ nav.box-nav a {
 .content-area { padding: 2rem 5% !important; }
 
 .welcome-title {
-     color: rgb(255, 255, 255) !important; 
+     color: rgb(0, 0, 0) !important; 
      font-weight: 700; 
      font-size: 2rem; 
      margin-bottom: 35px; 
@@ -60,12 +60,12 @@ nav.box-nav a {
 
 .card-dash {
     background-color: #480f67;
-    border-top: 6px solid #b92309b5;
+    border-top: 6px solid #220427b5;
     border-radius: 15px;
     padding: 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     height: 100%;
-    color : #fffafa;
+    color: #fffafa;
 }
 
 .card-dash h3 {
@@ -79,7 +79,7 @@ nav.box-nav a {
 }
 
 .btn-action {
-    background-color: var(--rojo-admin);
+    background-color: #30194f;
     color: white;
     border: none;
     font-size: 11px;

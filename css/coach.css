@@ -1,5 +1,5 @@
 body {
-    background-color: #a17b0ae8;
+    background-color: #ffffffd4;
     font-family: 'Segoe UI', Arial, sans-serif;
     min-height: 100vh;
 }
@@ -40,7 +40,7 @@ header .btn-gold-sm {
 
 
 nav {
-    background-color: #bb971aed;
+    background-color: #1a7900d4;
     padding: 10px 5%;
     display: flex; gap: 20px;
 } 
@@ -62,14 +62,14 @@ nav a:hover {
 }
 
 .theme-coach .welcome-title {
-    color: rgb(255, 255, 255) !important;
+    color: rgb(0, 0, 0) !important;
     font-weight: 700;
     font-size: 2.2rem;
     margin-bottom: 5px;
 }
 
 .coach-welcome {
-    color: rgb(255, 255, 255) !important;
+    color: rgb(0, 0, 0) !important;
     font-weight: 500;
     font-size: 1.6rem;
     margin-bottom: 30px;

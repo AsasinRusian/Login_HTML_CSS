@@ -1,0 +1,101 @@
+/* VARIABLES DE COLOR */
+:root { 
+    --morado: #1E0A35; 
+    --dorado: #F2B705; 
+    --dorado-light: #FFD84D; 
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: "Gill sans", sans-serif;
+    background: #0d0015; 
+    min-height: 100vh;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+}
+
+
+body::before {
+    content:''; position:fixed; inset:0;
+    background: radial-gradient(ellipse at 30% 50%, rgba(242,183,5,0.07) 0%, transparent 50%);
+    pointer-events:none;
+}
+
+
+.card {
+    position:relative; z-index:1;
+    background:rgba(255,255,255,0.04); 
+    border:1px solid rgba(242,183,5,0.25);
+    border-radius:20px; padding:48px 44px;
+    width:420px; max-width:96vw;
+    backdrop-filter:blur(20px);
+    box-shadow:0 30px 80px rgba(0,0,0,0.6);
+}
+
+.logo-wrap { text-align:center; margin-bottom:28px; }
+.logo-wrap img { height:53px; }
+
+h1 { 
+    font-family:'Bebas Neue',sans-serif; 
+    font-size:30px; 
+    letter-spacing:2px; 
+    color:white; 
+    margin-bottom:10px; 
+    text-align:center; 
+}
+
+.sub { 
+    font-size:13px; 
+    color:rgba(255,255,255,0.45); 
+    margin-bottom:28px; 
+    text-align:center; 
+    line-height:1.6; 
+}
+
+
+label { 
+    display:block; 
+    font-size:11px; 
+    font-weight:600; 
+    color:rgba(255,255,255,0.55); 
+    text-transform:uppercase; 
+    letter-spacing:0.8px; 
+    margin-bottom:7px; 
+}
+
+input {
+    width:100%; padding:13px 16px;
+    background:rgba(255,255,255,0.06); 
+    border:1px solid rgba(255,255,255,0.12);
+    border-radius:10px; color:white;
+    font-family:'Outfit',sans-serif; font-size:14px; 
+    outline:none; transition:all 0.2s;
+}
+
+input:focus { border-color:var(--dorado); background:rgba(242,183,5,0.07); }
+input::placeholder { color:rgba(255,255,255,0.2); }
+
+.btn-submit {
+    width:100%; padding:14px;
+    background:var(--dorado); color:var(--morado);
+    border:none; border-radius:10px;
+    font-family:'Outfit',sans-serif; font-size:15px; font-weight:700;
+    cursor:pointer; transition:all 0.3s; margin-top:16px;
+}
+
+.btn-submit:hover { background:var(--dorado-light); transform:translateY(-2px); }
+
+
+.success { 
+    background:rgba(39,174,96,0.15); 
+    border:1px solid rgba(39,174,96,0.4); 
+    border-radius:10px; padding:20px; 
+    color:#55efc4; text-align:center; 
+    font-size:14px; display:none; 
+}
+
+.back { text-align:center; margin-top:22px; }
+.back a { color:rgba(255,255,255,0.4); font-size:13px; text-decoration:none; }
+.back a:hover { color:var(--dorado); }

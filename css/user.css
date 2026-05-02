@@ -9,7 +9,7 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    background-color: #a17b0ae8;
+    background-color: #675f7b5e;
     font-family: 'Segoe UI', Arial, sans-serif;
     min-height: 100vh;
 }
@@ -48,7 +48,7 @@ nav.main-nav a:hover {
 
 .mb-4 { 
     margin-bottom: 1.5rem !important; 
-    color: rgb(255, 255, 255); 
+    color: rgb(27, 27, 27); 
     font-weight: 500;
 }
 

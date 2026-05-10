@@ -10,82 +10,90 @@
     <main class="landing-card">
         <div class="landing-card-bg"></div>
         
-        <div class="landing-card-content">
-            <header class="header-centrado">
-                <img src="../IMG/logo_empresa_letra_v1.png" alt="SportClub" class="logo-registro">
-                <div class="titulo-registro">
-                    <h1>CREAR CUENTA</h1>
-                    <p>Únete a la comunidad SportClub</p>
-                </div>
-            </header>
+        <header class="header-centrado">
+            <img src="../IMG/logo_empresa_letra_v1.png" alt="SportClub" class="logo-registro">
+            <div class="titulo-registro">
+                <h1>CREAR CUENTA</h1>
+                <p>Únete a la comunidad SportClub</p>
+            </div>
+        </header>
 
-            <form id="registerForm">
-                <h3 class="etiqueta-seccion">INFORMACIÓN PERSONAL</h3>
-                <div class="grid-formulario">
-                    <div class="campo">
-                        <label>NOMBRE COMPLETO *</label>
-                        <input type="text" placeholder="Ej: Kathalyna Higuera" required>
-                    </div>
-                    <div class="campo">
-                        <label>FECHA DE NACIMIENTO</label>
-                        <input type="date" required>
-                    </div>
-                    <div class="campo">
-                        <label>NÚMERO TELEFÓNICO *</label>
-                        <input type="tel" placeholder="+56 9 1234 5678" required>
-                    </div>
-                    <div class="campo">
-                        <label>NIVEL DE EXPERIENCIA EJERCITANDO</label>
-                        <select>
-                            <option>Principiante</option>
-                            <option>Intermedio</option>
-                            <option>Avanzado</option>
-                        </select>
-                    </div>
-                    <div class="campo">
-                        <label>TIPO DE DOCUMENTO *</label>
-                        <select>
-                            <option>Cédula</option>
-                            <option>RUT</option>
-                            <option>Pasaporte</option>
-                        </select>
-                    </div>
-                    <div class="campo">
-                        <label>NÚMERO DE DOCUMENTO *</label>
-                        <input type="text" placeholder="12.345.678-9" required>
-                    </div>
-                </div>
+        <form id="registerForm">
+            <h3 class="etiqueta-seccion">INFORMACIÓN PERSONAL</h3>
+            <div class="grid-formulario">
+                <label class="campo">
+                    <span>NOMBRE COMPLETO *</span>
+                    <input type="text" id="full_name" placeholder="Ej: Kathalyna Higuera" required>
+                    <div class="error-msg" id="err_name"></div>
+                </label>
+                
+                <label class="campo">
+                    <span>FECHA DE NACIMIENTO</span>
+                    <input type="date" id="birth_date" required>
+                </label>
 
-                <h3 class="etiqueta-seccion">CREDENCIALES DE ACCESO</h3>
-                <div class="grid-formulario">
-                    <div class="campo ancho-completo">
-                        <label>CORREO ELECTRÓNICO *</label>
-                        <input type="email" placeholder="nombre@correo.com" required>
-                    </div>
-                    <div class="campo">
-                        <label>CONTRASEÑA *</label>
-                        <input type="password" placeholder="Mín. 8 caracteres" required>
+                <label class="campo">
+                    <span>NÚMERO TELEFÓNICO *</span>
+                    <input type="tel" id="phone" placeholder="+56 9 1234 5678" required>
+                </label>
 
+                <label class="campo">
+                    <span>NIVEL DE EXPERIENCIA EJERCITANDO</span>
+                    <select id="nivel">
+                        <option value="principiante">Principiante</option>
+                        <option value="intermedio">Intermedio</option>
+                        <option value="avanzado">Avanzado</option>
+                    </select>
+                </label>
 
-                    </div>
-                    <div class="campo">
-                        <label>CONFIRMAR CONTRASEÑA *</label>
-                        <input type="password" placeholder="Repite tu contraseña" required>
-                    </div>
-                </div>
+                <label class="campo">
+                    <span>TIPO DE DOCUMENTO *</span>
+                    <select id="doc_type">
+                        <option value="cedula">Cédula</option>
+                        <option value="rut">RUT</option>
+                        <option value="pasaporte">Pasaporte</option>
+                    </select>
+                </label>
 
-                <div class="terminos">
-                    <input type="checkbox" id="acepto" required>
-                    <label for="acepto">Acepto los <span>Términos y Condiciones</span> y la <span>Política de Privacidad</span>.</label>
-                </div>
+                <label class="campo">
+                    <span>NÚMERO DE DOCUMENTO *</span>
+                    <input type="text" id="doc_num" placeholder="12.345.678-9" required>
+                </label>
+            </div>
 
-                <button type="submit" class="btn-principal">Crear Cuenta</button>
-            </form>
+            <h3 class="etiqueta-seccion">CREDENCIALES DE ACCESO</h3>
+            <div class="grid-formulario">
+                <label class="campo ancho-completo">
+                    <span>CORREO ELECTRÓNICO *</span>
+                    <input type="email" id="reg_email" placeholder="nombre@correo.com" required>
+                    <div class="error-msg" id="err_email"></div>
+                </label>
 
-            <footer class="footer-enlace">
-                <a href="login.html">¿Ya tienes cuenta? &rarr; Iniciar sesión</a>
-            </footer>
-        </div>
+                <label class="campo">
+                    <span>CONTRASEÑA *</span>
+                    <input type="password" id="reg_password" placeholder="Mín. 8 caracteres" required>
+                    <div class="error-msg" id="err_pass"></div>
+                </label>
+
+                <label class="campo">
+                    <span>CONFIRMAR CONTRASEÑA *</span>
+                    <input type="password" id="confirm_password" placeholder="Repite tu contraseña" required>
+                </label>
+            </div>
+
+            <div class="terminos">
+                <input type="checkbox" id="acepto" required>
+                <label for="acepto">Acepto los <span>Términos y Condiciones</span> y la <span>Política de Privacidad</span>.</label>
+            </div>
+
+            <button type="submit" class="btn-principal" id="btnRegister">Crear Cuenta</button>
+        </form>
+
+        <footer class="footer-enlace">
+            <a href="login.html">¿Ya tienes cuenta? &rarr; Iniciar sesión</a>
+        </footer>
     </main>
+
+    <script src="../js/auth.js"></script>
 </body>
 </html>

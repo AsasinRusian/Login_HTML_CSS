@@ -120,3 +120,10 @@ select option {
     .grid-formulario { grid-template-columns: 1fr; }
     .ancho-completo { grid-column: span 1; }
 }
+
+.error-msg {
+    color: #ff4d4d;
+    font-size: 11px;
+    margin-top: 4px;
+    display: none; 
+}

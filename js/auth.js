@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.getElementById('loginForm');
     const registerForm = document.getElementById('registerForm');
 
+    // --- 1. LOGIN (RESTAURADO PARA FUNCIONAMIENTO DE ADMIN.JS) ---
     if (loginForm) {
         loginForm.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -23,83 +24,75 @@ document.addEventListener('DOMContentLoaded', () => {
                 const result = await response.json();
 
                 if (response.ok && result.ok) {
+                    // ESTO ES LO MÁS IMPORTANTE:
+                    // 1. Guardar el token (admin.js lo usa en la línea 2)
                     localStorage.setItem('sc_token', result.data.token);
+                    // 2. Guardar el usuario (admin.html y admin.js lo usan para validar el rol)
                     sessionStorage.setItem('sc_user', JSON.stringify(result.data.user));
 
                     const role = result.data.user.role;
-                    if (role === 'admin') window.location.href = 'dashboard_admin.html';
-                    else if (role === 'coach') window.location.href = 'coach.html';
-                    else window.location.href = 'user.html';
+                    
+                    // Redirección a admin.html (tu archivo real)
+                    if (role === 'admin') {
+                        window.location.href = 'admin.html';
+                    } else if (role === 'coach') {
+                        window.location.href = 'coach.html';
+                    } else {
+                        window.location.href = 'user.html';
+                    }
                 } else {
-                    errorBox.textContent = result.message || "Credenciales incorrectas";
-                    errorBox.style.display = 'block';
-                    document.getElementById('email').style.borderColor = "red";
-                    document.getElementById('password').style.borderColor = "red";
+                    if (errorBox) {
+                        errorBox.textContent = result.message || "Credenciales incorrectas";
+                        errorBox.style.display = 'block';
+                    }
                 }
             } catch (error) {
-                errorBox.textContent = "Error de conexión con el servidor.";
-                errorBox.style.display = 'block';
+                if (errorBox) {
+                    errorBox.textContent = "Error de conexión con el servidor.";
+                    errorBox.style.display = 'block';
+                }
             }
         });
     }
 
+    // --- 2. REGISTRO (CON VALIDACIÓN SECUENCIAL VISUAL) ---
     if (registerForm) {
         registerForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            
-            // 1. Limpiar errores visuales previos antes de validar
             clearRegisterErrors(registerForm);
 
-            // 2. Definición secuencial de validaciones (según orden del formulario)
-            const validationRules = [
-                { id: 'full_name', msg: 'El nombre completo es obligatorio' },
-                { id: 'birth_date', msg: 'La fecha de nacimiento es obligatoria' },
-                { id: 'phone', msg: 'El número telefónico es obligatorio' },
-                { id: 'doc_num', msg: 'El número de documento es obligatorio' },
-                { 
-                    id: 'reg_email', 
-                    msg: 'Email inválido (debe contener @)', 
-                    validate: val => val.includes('@') 
-                },
-                { 
-                    id: 'reg_password', 
-                    msg: 'La contraseña debe tener al menos 8 caracteres, una mayúscula y un carácter especial', 
-                    validate: val => /^(?=.*[A-Z])(?=.*[\W_]).{8,}$/.test(val) 
-                },
-                { 
-                    id: 'confirm_password', 
-                    msg: 'Las contraseñas no coinciden', 
-                    validate: val => val === document.getElementById('reg_password').value 
-                },
-                { 
-                    id: 'acepto', 
-                    msg: 'Debes aceptar los términos y condiciones', 
-                    type: 'checkbox' 
-                }
+            const fields = [
+                { id: 'full_name', msg: 'El nombre es obligatorio' },
+                { id: 'birth_date', msg: 'La fecha es obligatoria' },
+                { id: 'phone', msg: 'El teléfono es obligatorio' },
+                { id: 'doc_num', msg: 'El documento es obligatorio' },
+                { id: 'reg_email', msg: 'Email inválido', validate: val => val.includes('@') },
+                { id: 'reg_password', msg: 'Mín. 8 caracteres, una mayúscula y un símbolo', validate: val => /^(?=.*[A-Z])(?=.*[\W_]).{8,}$/.test(val) },
+                { id: 'confirm_password', msg: 'Las contraseñas no coinciden', validate: val => val === document.getElementById('reg_password').value },
+                { id: 'acepto', msg: 'Debes aceptar los términos', type: 'checkbox' }
             ];
 
-            // 3. Validar uno por uno en orden
-            for (const rule of validationRules) {
-                const input = document.getElementById(rule.id);
+            for (const field of fields) {
+                const input = document.getElementById(field.id);
                 if (!input) continue;
 
-                const value = rule.type === 'checkbox' ? input.checked : input.value.trim();
-                let isInvalid = rule.type === 'checkbox' ? !value : !value;
+                const value = field.type === 'checkbox' ? input.checked : input.value.trim();
+                let invalid = field.type === 'checkbox' ? !value : !value;
 
-                // Validaciones extras (regex, comparaciones, etc.)
-                if (!isInvalid && rule.validate) {
-                    isInvalid = !rule.validate(input.value);
-                }
+                if (!invalid && field.validate) invalid = !field.validate(input.value);
 
-                if (isInvalid) {
-                    // Si falla, mostramos el error visual y detenemos la validación aquí
-                    showRegisterError(rule.id, rule.msg);
-                    input.focus(); 
-                    return; // Detiene el envío y muestra solo el primer error
+                if (invalid) {
+                    input.classList.add('is-invalid'); // Borde rojo
+                    const errDiv = document.getElementById(`err_${field.id}`);
+                    if (errDiv) {
+                        errDiv.textContent = field.msg;
+                        errDiv.style.display = 'block';
+                    }
+                    input.focus();
+                    return; 
                 }
             }
 
-            // 4. Si todo es válido, enviar el payload
             const payload = {
                 full_name: document.getElementById('full_name').value,
                 email: document.getElementById('reg_email').value,
@@ -119,64 +112,25 @@ document.addEventListener('DOMContentLoaded', () => {
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
                 });
-
-                const result = await response.json();
-
                 if (response.ok) {
-                    alert("¡Se ha registrado con éxito! Ahora puede iniciar sesión.");
+                    alert("¡Registro exitoso!");
                     window.location.href = "login.html";
                 } else {
-                    const globalErr = document.getElementById('globalError');
-                    if (globalErr) {
-                        globalErr.textContent = result.message;
-                        globalErr.style.display = 'block';
-                    } else {
-                        alert("Error: " + result.message);
-                    }
+                    const res = await response.json();
+                    alert(res.message);
                 }
-            } catch (error) {
-                console.error("Error:", error);
-                alert("Error de conexión con el servidor.");
-            }
+            } catch (err) { console.error(err); }
         });
     }
 });
 
-/**
- * Muestra el error visual (Borde rojo + texto debajo)
- */
-function showRegisterError(id, msg) {
-    const input = document.getElementById(id);
-    const errorDiv = document.getElementById(`err_${id}`);
-    
-    if (input) input.classList.add('is-invalid');
-    if (errorDiv) {
-        errorDiv.textContent = msg;
-        errorDiv.style.display = 'block';
-    }
-}
-
-/**
- * Limpia los errores visuales del registro
- */
 function clearRegisterErrors(form) {
-    form.querySelectorAll('input, select').forEach(el => {
-        el.classList.remove('is-invalid');
-    });
-    form.querySelectorAll('.error-msg').forEach(el => {
-        el.textContent = '';
-    });
+    form.querySelectorAll('input, select').forEach(i => i.classList.remove('is-invalid'));
+    form.querySelectorAll('.error-msg').forEach(m => m.textContent = "");
 }
 
-/**
- * Mantiene la función original para compatibilidad con login y otros procesos
- */
 function clearErrors(form) {
     form.querySelectorAll('input').forEach(i => i.style.borderColor = "");
-    form.querySelectorAll('.error-text').forEach(m => m.textContent = "");
     const errBox = document.getElementById('errorMsg');
     if (errBox) errBox.style.display = 'none';
-
-    const globalErr = document.getElementById('globalError');
-    if (globalErr) globalErr.style.display = 'none';
 }

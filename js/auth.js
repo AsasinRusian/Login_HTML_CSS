@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     sessionStorage.setItem('sc_user', JSON.stringify(result.data.user));
 
                     const role = result.data.user.role;
-                    if (role === 'admin') window.location.href = 'admin.html';
+                    if (role === 'admin') window.location.href = 'dashboard_admin.html';
                     else if (role === 'coach') window.location.href = 'coach.html';
                     else window.location.href = 'user.html';
                 } else {
@@ -46,28 +46,64 @@ document.addEventListener('DOMContentLoaded', () => {
     if (registerForm) {
         registerForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            clearErrors(registerForm);
+            
+            // 1. Limpiar errores visuales previos antes de validar
+            clearRegisterErrors(registerForm);
 
-            const password = document.getElementById('reg_password').value;
-            const confirm = document.getElementById('confirm_password').value;
-            let isValid = true;
+            // 2. Definición secuencial de validaciones (según orden del formulario)
+            const validationRules = [
+                { id: 'full_name', msg: 'El nombre completo es obligatorio' },
+                { id: 'birth_date', msg: 'La fecha de nacimiento es obligatoria' },
+                { id: 'phone', msg: 'El número telefónico es obligatorio' },
+                { id: 'doc_num', msg: 'El número de documento es obligatorio' },
+                { 
+                    id: 'reg_email', 
+                    msg: 'Email inválido (debe contener @)', 
+                    validate: val => val.includes('@') 
+                },
+                { 
+                    id: 'reg_password', 
+                    msg: 'La contraseña debe tener al menos 8 caracteres, una mayúscula y un carácter especial', 
+                    validate: val => /^(?=.*[A-Z])(?=.*[\W_]).{8,}$/.test(val) 
+                },
+                { 
+                    id: 'confirm_password', 
+                    msg: 'Las contraseñas no coinciden', 
+                    validate: val => val === document.getElementById('reg_password').value 
+                },
+                { 
+                    id: 'acepto', 
+                    msg: 'Debes aceptar los términos y condiciones', 
+                    type: 'checkbox' 
+                }
+            ];
 
-            if (password.length < 8) {
-                showInputError('reg_password', 'La contraseña debe tener al menos 8 caracteres');
-                isValid = false;
+            // 3. Validar uno por uno en orden
+            for (const rule of validationRules) {
+                const input = document.getElementById(rule.id);
+                if (!input) continue;
+
+                const value = rule.type === 'checkbox' ? input.checked : input.value.trim();
+                let isInvalid = rule.type === 'checkbox' ? !value : !value;
+
+                // Validaciones extras (regex, comparaciones, etc.)
+                if (!isInvalid && rule.validate) {
+                    isInvalid = !rule.validate(input.value);
+                }
+
+                if (isInvalid) {
+                    // Si falla, mostramos el error visual y detenemos la validación aquí
+                    showRegisterError(rule.id, rule.msg);
+                    input.focus(); 
+                    return; // Detiene el envío y muestra solo el primer error
+                }
             }
 
-            if (password !== confirm) {
-                showInputError('confirm_password', 'Las contraseñas no coinciden');
-                isValid = false;
-            }
-
-            if (!isValid) return;
-
+            // 4. Si todo es válido, enviar el payload
             const payload = {
                 full_name: document.getElementById('full_name').value,
                 email: document.getElementById('reg_email').value,
-                password: password,
+                password: document.getElementById('reg_password').value,
                 birth_date: document.getElementById('birth_date').value,
                 metadata: {
                     phone: document.getElementById('phone').value,
@@ -87,35 +123,54 @@ document.addEventListener('DOMContentLoaded', () => {
                 const result = await response.json();
 
                 if (response.ok) {
-                    window.location.href = "login.html?registered=true";
+                    alert("¡Se ha registrado con éxito! Ahora puede iniciar sesión.");
+                    window.location.href = "login.html";
                 } else {
                     const globalErr = document.getElementById('globalError');
                     if (globalErr) {
                         globalErr.textContent = result.message;
                         globalErr.style.display = 'block';
+                    } else {
+                        alert("Error: " + result.message);
                     }
                 }
             } catch (error) {
                 console.error("Error:", error);
+                alert("Error de conexión con el servidor.");
             }
         });
     }
 });
 
-
-function showInputError(id, msg) {
+/**
+ * Muestra el error visual (Borde rojo + texto debajo)
+ */
+function showRegisterError(id, msg) {
     const input = document.getElementById(id);
-    input.style.borderColor = "red"; 
-    let errorSpan = input.nextElementSibling;
-    if (!errorSpan || !errorSpan.classList.contains('error-text')) {
-        errorSpan = document.createElement('span');
-        errorSpan.classList.add('error-text');
-        errorSpan.style.cssText = "color: red; font-size: 11px; display: block; margin-top: 5px;";
-        input.parentNode.insertBefore(errorSpan, input.nextSibling);
+    const errorDiv = document.getElementById(`err_${id}`);
+    
+    if (input) input.classList.add('is-invalid');
+    if (errorDiv) {
+        errorDiv.textContent = msg;
+        errorDiv.style.display = 'block';
     }
-    errorSpan.textContent = msg;
 }
 
+/**
+ * Limpia los errores visuales del registro
+ */
+function clearRegisterErrors(form) {
+    form.querySelectorAll('input, select').forEach(el => {
+        el.classList.remove('is-invalid');
+    });
+    form.querySelectorAll('.error-msg').forEach(el => {
+        el.textContent = '';
+    });
+}
+
+/**
+ * Mantiene la función original para compatibilidad con login y otros procesos
+ */
 function clearErrors(form) {
     form.querySelectorAll('input').forEach(i => i.style.borderColor = "");
     form.querySelectorAll('.error-text').forEach(m => m.textContent = "");

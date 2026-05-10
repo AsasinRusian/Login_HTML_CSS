@@ -1,136 +1,206 @@
 const API_BASE = "http://localhost:3000/api";
-const token = localStorage.getItem('sc_token');
-const userModal = new bootstrap.Modal(document.getElementById('userModal'));
-const userForm = document.getElementById('userForm');
+const token = localStorage.getItem('sc_token'); // Obtenemos la llave de seguridad
 
-document.addEventListener('DOMContentLoaded', loadUsers);
+document.addEventListener('DOMContentLoaded', () => {
+    const session = JSON.parse(sessionStorage.getItem('sc_user') || 'null');
+    const profileForm = document.getElementById('profileForm');
+    const passwordForm = document.getElementById('passwordForm');
+    const btnEditHeader = document.getElementById('btnEditHeader');
 
-async function loadUsers() {
-    try {
-        const res = await fetch(`${API_BASE}/users`, {
-            headers: { 'Authorization': `Bearer ${token}` }
-        });
-        const result = await res.json();
-        if (result.ok) renderUsers(result.data);
-    } catch (err) {
-        console.error("Error cargando usuarios:", err);
-    }
-}
+    // 1. Carga Dinámica de Datos
+    if (session) {
+        const welcomeName = document.getElementById('welcome_name');
+        const dashEmail = document.getElementById('dash_email');
+        if (welcomeName) welcomeName.textContent = session.full_name;
+        if (dashEmail) dashEmail.textContent = session.email;
 
-function renderUsers(users) {
-    const tbody = document.getElementById('usersTableBody');
-    tbody.innerHTML = '';
-    users.forEach(user => {
-        const fecha = new Date(user.created_at).toLocaleDateString('es-CL');
-        let badge = user.role === 'admin' ? 'bg-danger' : (user.role === 'coach' ? 'bg-primary' : 'bg-success');
+        const displayName = document.getElementById('display_name');
+        const displayEmail = document.getElementById('display_email');
+        if (displayName) displayName.textContent = session.full_name;
+        if (displayEmail) displayEmail.textContent = session.email;
         
-        tbody.innerHTML += `
-            <tr>
-                <td>${user.id}</td>
-                <td>${user.full_name}</td>
-                <td>${user.email}</td>
-                <td><span class="badge ${badge}">${user.role}</span></td>
-                <td>${fecha}</td>
-                <td class="text-center">
-                    <button class="btn btn-warning btn-sm me-1" onclick="openEditModal(${user.id})">✎</button>
-                    <button class="btn btn-danger btn-sm" onclick="deleteUser(${user.id})">🗑</button>
-                </td>
-            </tr>`;
-    });
-}
-
-
-async function deleteUser(id) {
-    if (!confirm("¿Estás seguro de eliminar este usuario?")) return;
-
-    try {
-        const res = await fetch(`${API_BASE}/users/${id}`, {
-            method: 'DELETE',
-            headers: { 'Authorization': `Bearer ${token}` }
-        });
-        const result = await res.json();
-        if (result.ok) loadUsers();
-    } catch (err) {
-        console.error("Error eliminando usuario:", err);
+        const inputName = document.getElementById('full_name');
+        const inputEmail = document.getElementById('email');
+        if (inputName) inputName.value = session.full_name;
+        if (inputEmail) inputEmail.value = session.email;
     }
-}
 
-
-function openCreateModal() {
-    userForm.reset();
-    document.getElementById('userId').value = '';
-    document.getElementById('modalTitle').innerText = 'Nuevo Usuario';
-    document.getElementById('passwordFields').style.display = 'block';
-    document.getElementById('password').required = true;
-    userModal.show();
-}
-
-
-async function openEditModal(id) {
-    try {
-        const res = await fetch(`${API_BASE}/users/${id}`, {
-            headers: { 'Authorization': `Bearer ${token}` }
-        });
-        const result = await res.json();
-        if (result.ok) {
-            const user = result.data;
-            document.getElementById('userId').value = user.id;
-            document.getElementById('full_name').value = user.full_name;
-            document.getElementById('email').value = user.email;
-            document.getElementById('role').value = user.role;
+    // 2. Lógica de Navegación
+    const navLinks = document.querySelectorAll('#userNav [data-view]');
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetView = link.getAttribute('data-view');
             
-            document.getElementById('modalTitle').innerText = 'Editar Usuario';
-            document.getElementById('passwordFields').style.display = 'none'; 
-            document.getElementById('password').required = false;
-            userModal.show();
-        }
-    } catch (err) {
-        console.error("Error al cargar detalle:", err);
-    }
-}
-
-userForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const userId = document.getElementById('userId').value;
-    
-    const payload = {
-        full_name: document.getElementById('full_name').value,
-        email: document.getElementById('email').value,
-        role: document.getElementById('role').value
-    };
-
-
-    if (!userId) {
-        const pass = document.getElementById('password').value;
-        const confirm = document.getElementById('confirm_password').value;
-        if (pass !== confirm) {
-            document.getElementById('confirm_password').classList.add('is-invalid');
-            return;
-        }
-        payload.password = pass;
-    }
-
-    const url = userId ? `${API_BASE}/users/${userId}` : `${API_BASE}/users`;
-    const method = userId ? 'PUT' : 'POST';
-
-    try {
-        const res = await fetch(url, {
-            method: method,
-            headers: { 
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            },
-            body: JSON.stringify(payload)
+            document.querySelectorAll('.user-view').forEach(v => v.classList.add('d-none'));
+            const targetElement = document.getElementById(targetView);
+            if (targetElement) targetElement.classList.remove('d-none');
+            
+            navLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
         });
-        const result = await res.json();
-        
-        if (result.ok) {
-            userModal.hide();
-            loadUsers();
-        } else {
-            alert("Error: " + result.message); 
-        }
-    } catch (err) {
-        console.error("Error al guardar:", err);
+    });
+
+    // 3. Botón "Editar Perfil"
+    if (btnEditHeader) {
+        btnEditHeader.addEventListener('click', () => {
+            const profileTab = document.querySelector('[data-view="view-profile"]');
+            if (profileTab) profileTab.click();
+            
+            setTimeout(() => {
+                const inputName = document.getElementById('full_name');
+                if (inputName) {
+                    inputName.focus();
+                    inputName.select();
+                }
+            }, 100);
+        });
     }
+
+    // 4. Validación y Guardado de Perfil (CONECTADO AL BACKEND)
+    if (profileForm) {
+        // Hacemos la función asíncrona (async)
+        profileForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            clearErrors();
+
+            const name = document.getElementById('full_name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            let isValid = true;
+
+            if (!name) {
+                showError('full_name', 'El nombre es obligatorio');
+                isValid = false;
+            }
+
+            if (!email.includes('@')) {
+                showError('email', 'Ingrese un email válido (debe contener @)');
+                isValid = false;
+            }
+
+            if (isValid && session) {
+                try {
+                    // Petición al backend
+                    const response = await fetch(`${API_BASE}/users/${session.id}`, {
+                        method: 'PUT',
+                        headers: { 
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}` 
+                        },
+                        body: JSON.stringify({
+                            full_name: name,
+                            email: email,
+                            role: session.role // Mantenemos el mismo rol
+                        })
+                    });
+
+                    if (response.ok) {
+                        // Si el servidor responde OK, actualizamos la vista y la sesión
+                        session.full_name = name;
+                        session.email = email;
+                        sessionStorage.setItem('sc_user', JSON.stringify(session));
+
+                        const welcomeName = document.getElementById('welcome_name');
+                        const dashEmail = document.getElementById('dash_email');
+                        const displayName = document.getElementById('display_name');
+                        const displayEmail = document.getElementById('display_email');
+
+                        if (welcomeName) welcomeName.textContent = name;
+                        if (dashEmail) dashEmail.textContent = email;
+                        if (displayName) displayName.textContent = name;
+                        if (displayEmail) displayEmail.textContent = email;
+                        
+                        alert("¡Perfil actualizado correctamente!");
+                    } else {
+                        const errorData = await response.json();
+                        alert("Error del servidor: " + errorData.message);
+                    }
+                } catch (error) {
+                    console.error("Error al conectar con la API:", error);
+                    alert("Hubo un problema al intentar guardar los cambios.");
+                }
+            }
+        });
+    }
+
+    // 5. Validación y Cambio de Contraseña (CONECTADO AL BACKEND)
+    if (passwordForm) {
+        // Hacemos la función asíncrona (async)
+        passwordForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            clearErrors();
+
+            const newPass = document.getElementById('new_pass').value;
+            const confirmPass = document.getElementById('confirm_pass').value;
+            let isValid = true;
+
+            if (newPass.length < 8) {
+                showError('new_pass', 'La contraseña debe tener al menos 8 caracteres');
+                isValid = false;
+            }
+
+            if (newPass !== confirmPass) {
+                showError('confirm_pass', 'Las contraseñas no coinciden');
+                isValid = false;
+            }
+
+            if (isValid && session) {
+                try {
+                    // Petición al backend (usamos PUT porque actualiza el mismo registro del usuario)
+                    const response = await fetch(`${API_BASE}/users/${session.id}`, {
+                        method: 'PUT',
+                        headers: { 
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}` 
+                        },
+                        body: JSON.stringify({
+                            full_name: session.full_name, // Reenviamos los datos actuales para no borrarlos
+                            email: session.email,
+                            role: session.role,
+                            password: newPass // Agregamos la nueva contraseña
+                        })
+                    });
+
+                    if (response.ok) {
+                        alert("Contraseña actualizada con éxito");
+                        passwordForm.reset();
+                    } else {
+                        const errorData = await response.json();
+                        alert("Error del servidor: " + errorData.message);
+                    }
+                } catch (error) {
+                    console.error("Error al conectar con la API:", error);
+                    alert("Hubo un problema al intentar cambiar la contraseña.");
+                }
+            }
+        });
+    }
+
+    // 6. Funciones de Feedback Visual
+    function showError(id, msg) {
+        const input = document.getElementById(id);
+        const errorDiv = document.getElementById(`err_${id}`);
+        if (input) input.classList.add('is-invalid');
+        if (errorDiv) errorDiv.textContent = msg;
+    }
+
+    function clearErrors() {
+        document.querySelectorAll('.is-invalid').forEach(el => el.classList.remove('is-invalid'));
+        document.querySelectorAll('.error-msg').forEach(el => el.textContent = '');
+    }
+
+    // Mostrar/ocultar contraseña
+    document.querySelectorAll('.input-group-text').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const input = btn.parentElement.querySelector('input');
+            const icon = btn.querySelector('i');
+            if (input && input.type === "password") {
+                input.type = "text";
+                icon.classList.replace('bi-eye', 'bi-eye-slash');
+            } else if (input) {
+                input.type = "password";
+                icon.classList.replace('bi-eye-slash', 'bi-eye');
+            }
+        });
+    });
 });

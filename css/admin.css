@@ -1,118 +1,151 @@
+/* Paleta de colores institucional SportClub */
 :root {
-    --morado-admin: #2E1A47;
-    --rojo-admin: #B22222; 
-    --blanco: #FFFFFF;
+    --sidebar-bg: #1e0a35;
+    --primary-blue: #0056b3;
+    --accent-gold: #f2b705;
+    --success-green: #27ae60;
+    --danger-red: #c0392b;
+    --light-gray: #f4f7f6;
+    --text-dark: #333;
 }
 
 body {
-    background-color: #ffffffe8;
-    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: var(--light-gray);
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.sidebar-nav {
+    width: 260px;
+    height: 100vh;
+    background-color: var(--sidebar-bg);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;         
+    flex-direction: column; 
+    padding-bottom: 20px;
+}
+
+.sidebar-nav .logo {
+    width: 180px;
+    margin: 20px auto;
+    display: block;
+    padding: 10px;
+}
+
+.sidebar-nav .nav-link {
+    color: rgba(255,255,255,0.7);
+    padding: 12px 25px;
+    margin: 5px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.sidebar-nav .nav-link i {
+    font-size: 1.2rem;
+    margin-right: 15px;
+}
+
+.sidebar-nav .nav-link:hover, 
+.sidebar-nav .nav-link.active {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.sidebar-nav .nav-link.active {
+    border-left: 4px solid var(--accent-gold);
+}
+
+.main-content {
+    margin-left: 260px; 
+    padding: 40px;
     min-height: 100vh;
 }
 
-header.box-header {
-    background-color: rgb(31 5 51 / 94%);
-    border-bottom: 5px solid #7422b2;
-    padding: 1rem 40px;
-}
-
-#btnEditarPerfil.btn-outline-custom {
-    background-color: transparent !important;
-    border: 1px solid #ffffff !important;
-    color: #ffffff !important;
-    font-size: 13px !important;
-    padding: 5px 15px !important;
-    border-radius: 6px !important;
-}
-
-header .btn-gold-sm {
-    background-color: #ffffff !important;
-    color: #000000 !important;
-    border: 1px solid #ffffff !important;
-    font-size: 13px !important;
-    padding: 5px 15px !important;
-    border-radius: 6px !important;
-    text-decoration: none;
-}
-
-nav.box-nav {
-    background-color: #480f67;
-    padding: 10px 5%;
-}
-
-nav.box-nav a { 
-    color: white;
-    text-decoration: none; 
-    font-weight: bold; 
-    margin-right: 25px; 
-}
-
-.content-area { padding: 2rem 5% !important; }
-
 .welcome-title {
-     color: rgb(0, 0, 0) !important; 
-     font-weight: 700; 
-     font-size: 2rem; 
-     margin-bottom: 35px; 
+    color: var(--sidebar-bg);
+    font-weight: 700;
+    font-size: 2rem;
 }
-
-.admin-welcome { color: black !important; font-weight: 500; font-size: 1rem; margin-bottom: 30px; }
 
 .card-dash {
-    background-color: #480f67;
-    border-top: 6px solid #220427b5;
-    border-radius: 15px;
-    padding: 20px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    background: white;
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    padding: 25px;
     height: 100%;
-    color: #fffafa;
 }
 
 .card-dash h3 {
-    color: #fffafa !important;
-    font-weight: 700;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
+    color: #888;
     text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
     border-bottom: 1px solid #eee;
     padding-bottom: 10px;
-    margin-bottom: 15px;
 }
 
-.btn-action {
-    background-color: #30194f;
-    color: white;
+
+.table {
+    margin-top: 15px;
+}
+
+.table thead th {
+    background-color: #f8f9fa;
+    color: var(--sidebar-bg);
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    border-bottom: 2px solid #dee2e6;
+}
+
+
+.badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.bg-danger { background-color: var(--danger-red) !important; }
+.bg-primary { background-color: var(--primary-blue) !important; }
+.bg-success { background-color: var(--success-green) !important; }
+
+
+.btn-warning {
+    background-color: var(--accent-gold);
     border: none;
-    font-size: 11px;
-    padding: 4px 10px;
-    border-radius: 4px;
-    font-weight: bold;
+    color: var(--sidebar-bg);
 }
 
-.table thead th { background-color: #f8f9fa !important; color: #333 !important; font-size: 12px; }
-
-.modal-text-custom { font-size: 13px !important; }
-
-.logo {
-    width: 220px;
-    height: auto;
+.btn-danger {
+    background-color: var(--danger-red);
+    border: none;
 }
 
-.theme-admin .modal-title {
-    color: #F2B705 !important; 
-    font-size: 0.95rem !important;
-    letter-spacing: 0.5px;
+
+.error-msg {
+    color: var(--danger-red);
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-top: 5px;
 }
 
-.theme-admin .modal-footer .btn-danger {
-    background-color: #F2B705 !important;
-    border-color: #F2B705 !important;
-    color: #2E1A47 !important; 
-    font-weight: bold;
-    font-size: 12px !important;
-    padding: 8px;
+.form-control.is-invalid {
+    border-color: var(--danger-red) !important;
 }
 
-.border-danger {
-    --bs-border-opacity: 1;
-    border-color: rgb(207 220 53) !important;
+
+#stat-users {
+    font-size: 4rem;
+    color: var(--accent-gold);
+    line-height: 1;
 }

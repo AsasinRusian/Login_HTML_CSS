@@ -4,6 +4,7 @@
     --dorado-brillante: #FFD84D;
     --texto-gris: rgba(255, 255, 255, 0.5);
     --fondo-blur: rgba(255, 255, 255, 0.04);
+    --error-rojo: #ff4d4d;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -12,9 +13,9 @@ body {
     background-color: #0d0015;
     font-family: system-ui, -apple-system, sans-serif;
     display: flex; justify-content: center;
+    align-items: center; 
     min-height: 100vh; color: white;
 }
-
 
 body::before {
     content: ''; position: fixed; inset: 0;
@@ -25,21 +26,23 @@ body::before {
 
 .landing-card {
     position: relative; z-index: 1;
-    width: 960px; max-width: 95vw;
-    margin: 40px 0;
+    width: 800px; 
+    max-width: 95vw;
+    margin: 20px 0; 
     background: var(--fondo-blur);
     backdrop-filter: blur(25px);
-    border: 3px solid rgba(242, 183, 5, 0.2);
-    border-radius: 25px;
-    padding: 50px;
-    box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+    border: 2px solid rgba(242, 183, 5, 0.15); 
+    border-radius: 20px; 
+    padding: 30px 40px; 
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6);
 }
 
 .landing-card-bg {
     position: absolute; inset: 0;
-    background: linear-gradient(135deg, rgb(23 1 35 / 85%) 40%, rgb(24 10 43 / 80%) 100%), url(../IMG/image_876303.jpg);
+    background: linear-gradient(135deg, rgb(23 1 35 / 90%) 40%, rgb(24 10 43 / 85%) 100%), url(../IMG/image_876303.jpg);
     background-size: cover; background-position: center;
     z-index: -1;
+    border-radius: 20px;
 }
 
 .header-centrado {
@@ -47,83 +50,105 @@ body::before {
     flex-direction: column; 
     align-items: center;    
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 25px; 
 }
 
-.logo-registro { height: 60px; margin-bottom: 10px; }
+.logo-registro { height: 45px; margin-bottom: 8px; } 
 
 .titulo-registro h1 {
     font-family: "Gill sans", sans-serif;
-    font-size: 38px; letter-spacing: 2px;
+    font-size: 28px; 
+    letter-spacing: 1px;
 }
 
-.titulo-registro p { color: var(--texto-gris); font-size: 15px; }
+.titulo-registro p { color: var(--texto-gris); font-size: 13px; } 
 
 .etiqueta-seccion {
     color: var(--dorado);
-    font-size: 14px; margin: 35px 0 15px 0;
+    font-size: 12px; 
+    margin: 20px 0 12px 0; 
     border-bottom: 1px solid rgba(255,255,255,0.1);
-    padding-bottom: 8px;
+    padding-bottom: 5px;
+    text-transform: uppercase;
 }
 
 .grid-formulario {
     display: grid; grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: 12px 20px; 
 }
 
-.campo { display: flex; flex-direction: column; gap: 8px; }
+.campo { display: flex; flex-direction: column; gap: 5px; }
 .ancho-completo { grid-column: span 2; }
 
-label { font-size: 12px; font-weight: bold; color: rgba(255,255,255,0.7); }
+label span { font-size: 11px; font-weight: bold; color: rgba(255,255,255,0.7); }
 
 input, select {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px; padding: 14px 18px;
-    color: white; font-size: 15px; outline: none;
+    border-radius: 8px; 
+    padding: 10px 14px; 
+    color: white; font-size: 14px; outline: none;
+    transition: all 0.3s;
 }
 
 input:focus { border-color: var(--dorado); background: rgba(255,255,255,0.08); }
 
-input[type="date"]::-webkit-calendar-picker-indicator {
-    filter: invert(100%); 
-    cursor: pointer;
+input.is-invalid, select.is-invalid {
+    border-color: var(--error-rojo) !important;
+    background: rgba(255, 77, 77, 0.05);
 }
 
-select option {
-    background-color: #ffffff; 
-    color: black;              
+.error-msg {
+    color: var(--error-rojo);
+    font-size: 10px;
+    font-weight: 600;
+    margin-top: 2px;
+    min-height: 12px;
 }
-
 
 .terminos {
-    margin-top: 14px;    
-    margin-bottom: 27px;  
+    margin-top: 15px;    
+    margin-bottom: 15px; 
+    font-size: 12px;
 }
+
+.terminos label { font-weight: normal; }
 
 .btn-principal {
     background: var(--dorado); color: black;
-    border: none; width: 100%; padding: 18px;
-    border-radius: 14px; font-weight: bold; font-size: 17px;
+    border: none; width: 100%; padding: 12px; 
+    border-radius: 10px; font-weight: bold; font-size: 15px;
     cursor: pointer; transition: 0.3s;
 }
 
 .btn-principal:hover {
     background: var(--dorado-brillante);
-    transform: translateY(-2px);
+    transform: translateY(-1px);
 }
 
-.footer-enlace { text-align: center; margin-top: 30px; }
-.footer-enlace a { color: var(--texto-gris); text-decoration: none; font-size: 14px; }
+.footer-enlace { text-align: center; margin-top: 20px; } 
+.footer-enlace a { color: var(--texto-gris); text-decoration: none; font-size: 13px; }
 
 @media (max-width: 600px) {
     .grid-formulario { grid-template-columns: 1fr; }
     .ancho-completo { grid-column: span 1; }
+    .landing-card { padding: 25px 20px; }
 }
 
-.error-msg {
-    color: #ff4d4d;
-    font-size: 11px;
-    margin-top: 4px;
-    display: none; 
+select option {
+    background-color: #303030; 
+    color: #ffffff;            
+    padding: 10px;
+}
+
+
+select {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px; 
+    padding: 10px 14px;
+    color: white; 
+    font-size: 14px;
+    outline: none;
+    appearance: none; 
 }

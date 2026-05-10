@@ -18,23 +18,25 @@
             </div>
         </header>
 
-        <form id="registerForm">
+        <form id="registerForm" novalidate>
             <h3 class="etiqueta-seccion">INFORMACIÓN PERSONAL</h3>
             <div class="grid-formulario">
                 <label class="campo">
                     <span>NOMBRE COMPLETO *</span>
-                    <input type="text" id="full_name" placeholder="Ej: Kathalyna Higuera" required>
-                    <div class="error-msg" id="err_name"></div>
+                    <input type="text" id="full_name" placeholder="Ej: Kathalyna Higuera">
+                    <div class="error-msg" id="err_full_name"></div>
                 </label>
                 
                 <label class="campo">
                     <span>FECHA DE NACIMIENTO</span>
-                    <input type="date" id="birth_date" required>
+                    <input type="date" id="birth_date">
+                    <div class="error-msg" id="err_birth_date"></div>
                 </label>
 
                 <label class="campo">
                     <span>NÚMERO TELEFÓNICO *</span>
-                    <input type="tel" id="phone" placeholder="+56 9 1234 5678" required>
+                    <input type="tel" id="phone" placeholder="+56 9 1234 5678">
+                    <div class="error-msg" id="err_phone"></div>
                 </label>
 
                 <label class="campo">
@@ -44,20 +46,22 @@
                         <option value="intermedio">Intermedio</option>
                         <option value="avanzado">Avanzado</option>
                     </select>
+                    <div class="error-msg" id="err_nivel"></div>
                 </label>
 
                 <label class="campo">
                     <span>TIPO DE DOCUMENTO *</span>
                     <select id="doc_type">
                         <option value="cedula">Cédula</option>
-                        <option value="rut">RUT</option>
                         <option value="pasaporte">Pasaporte</option>
                     </select>
+                    <div class="error-msg" id="err_doc_type"></div>
                 </label>
 
                 <label class="campo">
                     <span>NÚMERO DE DOCUMENTO *</span>
-                    <input type="text" id="doc_num" placeholder="12.345.678-9" required>
+                    <input type="text" id="doc_num" placeholder="12.345.678-9">
+                    <div class="error-msg" id="err_doc_num"></div>
                 </label>
             </div>
 
@@ -65,25 +69,27 @@
             <div class="grid-formulario">
                 <label class="campo ancho-completo">
                     <span>CORREO ELECTRÓNICO *</span>
-                    <input type="email" id="reg_email" placeholder="nombre@correo.com" required>
-                    <div class="error-msg" id="err_email"></div>
+                    <input type="email" id="reg_email" placeholder="nombre@correo.com">
+                    <div class="error-msg" id="err_reg_email"></div>
                 </label>
 
                 <label class="campo">
                     <span>CONTRASEÑA *</span>
-                    <input type="password" id="reg_password" placeholder="Mín. 8 caracteres" required>
-                    <div class="error-msg" id="err_pass"></div>
+                    <input type="password" id="reg_password" placeholder="Mín. 8 caracteres">
+                    <div class="error-msg" id="err_reg_password"></div>
                 </label>
 
                 <label class="campo">
                     <span>CONFIRMAR CONTRASEÑA *</span>
-                    <input type="password" id="confirm_password" placeholder="Repite tu contraseña" required>
+                    <input type="password" id="confirm_password" placeholder="Repite tu contraseña">
+                    <div class="error-msg" id="err_confirm_password"></div>
                 </label>
             </div>
 
             <div class="terminos">
-                <input type="checkbox" id="acepto" required>
+                <input type="checkbox" id="acepto">
                 <label for="acepto">Acepto los <span>Términos y Condiciones</span> y la <span>Política de Privacidad</span>.</label>
+                <div class="error-msg" id="err_acepto"></div>
             </div>
 
             <button type="submit" class="btn-principal" id="btnRegister">Crear Cuenta</button>

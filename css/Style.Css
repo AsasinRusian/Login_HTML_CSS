@@ -133,3 +133,10 @@ input::placeholder { color: rgba(255,255,255,0.25); }
 .badge-user { background: rgba(0,86,179,0.3); color: #74b9ff; }
 .badge-coach { background: rgba(26,89,40,0.4); color: #55efc4; }
 .badge-admin { background: rgba(192,57,43,0.3); color: #ff7675; }
+
+.error-msg {
+    color: #ff4d4d;
+    font-size: 11px;
+    margin-top: 4px;
+    display: none; 
+}

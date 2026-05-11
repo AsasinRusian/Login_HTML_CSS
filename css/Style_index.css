@@ -1,245 +1,77 @@
-/* VARIABLES Y BASE */
+/* VARIABLES GLOBALES */
 :root {
-    --morado: #1E0A35;
-    --morado-mid: #2E1A47;
-    --dorado: #F2B705;
-    --dorado-light: #FFD84D;
-    --rojo: #C0392B;
-    --blanco: #FFFFFF;
-    --gris-claro: rgba(255,255,255,0.08);
-}
-
-* { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
+    --accent-gold: #f2b705;
 }
 
 body {
-    font-family:  "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: #0d0015;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow-x: hidden;
+    scroll-behavior: smooth;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
-/* Efecto de luces de fondo */
-body::before {
-    content: '';
-    position: fixed; inset: 0;
-    background: radial-gradient(ellipse at top left, rgba(52, 9, 100, 0.54) 0%, transparent 50%),
-                radial-gradient(ellipse at bottom right, rgba(36, 13, 65, 0.9) 0%, transparent 60%);
-    pointer-events: none; 
-    z-index: 0;
+/* EFECTOS DE BARRA DE NAVEGACIÓN */
+.navbar {
+    background-color: rgba(33, 37, 41, 0.95) !important;
+    backdrop-filter: blur(8px); /* Da un ligero efecto borroso atrás del menú */
 }
 
-/* CONTENEDOR PRINCIPAL */
-.landing-card {
-    position: relative;
-    width: 1100px; 
-    max-width: 97vw;
-    border: 2px solid var(--dorado);
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 0 80px rgba(242,183,5,0.15), 0 30px 80px rgba(0,0,0,0.8);
-    z-index: 1;
+.nav-link {
+    transition: color 0.3s ease;
 }
 
-.landing-card-bg {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(21, 10, 36, 0.8) 40%, rgba(46,26,71,0.8) 100%),
-                url('../IMG/gym.jpg'); 
+.nav-link:hover {
+    color: var(--accent-gold) !important;
+}
+
+/* SECCIÓN HERO (IMAGEN DE FONDO) */
+.hero-commercial {
+    /* Aquí se coloca la imagen que antes tenías en el HTML */
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1470&auto=format&fit=crop');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    z-index: 0;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
 }
 
-.landing-card-content { 
-    position: relative; 
-    z-index: 1; 
-}
-
-/* HEADER */
-.site-header {
-    display: flex; 
-    align-items: center; 
-    justify-content: space-between;
-    padding: 28px 50px 20px;
-    border-bottom: 1px solid rgba(242,183,5,0.2);
-}
-
-.logo-img { 
-    height: 55px; 
-    width: auto; 
-}
-
-.nav-pills { 
-    display: flex; 
-    gap: 10px; 
-}
-
-.btn-pill {
-    padding: 10px 28px; 
-    border-radius: 50px; 
-    font-weight: 600; 
-    font-size: 14px; 
-    text-decoration: none;
-    transition: all 0.3s ease; 
-    cursor: pointer; 
-    border: none;
-}
-
-.btn-pill-ghost { 
-    background: transparent; 
-    border: 2px solid var(--dorado); 
-    color: var(--dorado); 
-}
-
-.btn-pill-ghost:hover { 
-    background: var(--dorado); 
-    color: var(--morado); 
-}
-
-.btn-pill-solid { 
-    background: var(--dorado); 
-    color: var(--morado); 
-}
-
-.btn-pill-solid:hover { 
-    background: var(--dorado-light); 
-    transform: translateY(-2px); 
-}
-
-/* SECCIÓN CENTRAL */
-.landing-card-center { 
-    padding: 50px 50px 40px; 
-}
-
-.tagline {
-    font-family: "Gill sans", sans-serif;
-    font-size: clamp(50px, 6vw, 90px);
-    line-height: 0.8;
-    color: white;
-    letter-spacing: 3px;
-    margin-bottom: 10px;
-}
-
-
-
-.sub-tagline {
-    font-size: 16px; 
-    color: rgba(255,255,255,0.65);
-    font-weight: 300; 
-    margin-bottom: 40px; 
-    max-width: 500px;
-}
-
-/* ESTADÍSTICAS */
-.stats-bar {
-    display: flex; 
-    gap: 40px; 
-    margin-bottom: 50px;
-}
-
-.stat { 
-    border-left: 3px solid var(--dorado); 
-    padding-left: 14px; 
-}
-
-.stat-num { 
-    font-family: Impact, sans-serif;
-    font-size: 36px; 
-    color: var(--dorado); 
-    line-height: 1; 
-}
-
-.stat-label { 
-    font-size: 11px; 
-    color: rgba(255,255,255,0.55); 
-    text-transform: uppercase; 
-    letter-spacing: 1px; 
-}
-
-/* CUADRICULA DE INFORMACIÓN */
-.info-grid {
-    display: grid; 
-    grid-template-columns: 1fr 1fr; 
-    gap: 20px;
-    padding: 0 50px 40px;
-}
-
-.info-card {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 14px; 
-    padding: 28px;
-    backdrop-filter: blur(10px);
-    transition: border-color 0.3s, transform 0.3s;
-}
-
-.info-card:hover { 
-    border-color: rgba(242,183,5,0.4); 
-    transform: translateY(-3px); 
-}
-
-.info-card h2 {
-    font-family: "Gill sans", sans-serif;
-    font-size: 22px; 
+/* UTILIDADES Y EFECTOS VISUALES */
+.tracking-wide {
     letter-spacing: 1.5px;
-    color: var(--dorado); 
-    margin-bottom: 14px;
 }
 
-.highlight {
-    color: var(--dorado);
+/* EFECTO HOVER PARA TARJETAS DE SERVICIOS Y PLANES */
+.transition-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.info-card p, .info-card li {
-    font-size: 14px; 
-    color: rgba(255,255,255,0.72); 
-    line-height: 1.7;
+.transition-hover:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 25px rgba(0,0,0,0.1) !important;
 }
 
-.info-card ul { 
-    padding-left: 18px; 
+/* BOTONES PERSONALIZADOS */
+.btn-warning {
+    background-color: var(--accent-gold);
+    border: none;
+    transition: all 0.3s ease;
 }
 
-.info-card li { 
-    margin-bottom: 6px; 
+.btn-warning:hover {
+    background-color: #d9a404;
+    transform: scale(1.05); /* Hace crecer el botón ligeramente al pasar el mouse */
 }
 
-.info-card li strong { 
-    color: white; 
+.btn-outline-light:hover {
+    background-color: #ffffff;
+    color: #000000 !important;
 }
 
-/* PIE DE PÁGINA */
-.landing-card-footer {
-    display: flex; 
-    align-items: center; 
-    justify-content: space-between;
-    padding: 22px 50px;
-    border-top: 1px solid rgba(242,183,5,0.15);
+/* ENLACES FOOTER */
+.hover-warning {
+    transition: color 0.3s ease;
 }
 
-.landing-card-footer p { 
-    font-size: 12px; 
-    color: rgba(255,255,255,0.3); 
-}
-
-.cta-group { 
-    display: flex; 
-    gap: 12px; 
-}
-
-/* RESPONSIVE */
-@media(max-width: 700px) {
-    .site-header { padding: 20px; }
-    .landing-card-center, .info-grid { padding: 30px 20px; }
-    .info-grid { grid-template-columns: 1fr; }
-    .landing-card-footer { flex-direction: column; gap: 16px; padding: 20px; }
-    .stats-bar { gap: 20px; }
+.hover-warning:hover {
+    color: var(--accent-gold) !important;
 }

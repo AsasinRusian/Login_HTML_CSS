@@ -3,71 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SportClub - Tu mejor versión</title>
-    <link rel="stylesheet" href="../css/style_index.css">
+    <title>SportClub — Entrena sin límites</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../css/Style_index.css">
 </head>
-<body>
-    <main class="landing-card">
-        <div class="landing-card-bg"></div>
-        
-        <div class="landing-card-content">
-            <header class="site-header">
-                <img src="../IMG/logo_empresa_letra_v1.png" alt="SportClub" class="logo-img">
-                <nav class="nav-pills">
-                    <a href="login.html" class="btn-pill btn-pill-ghost">Iniciar Sesión</a>
-                    <a href="register.html" class="btn-pill btn-pill-solid">Registrarse</a>
-                </nav>
-            </header>
+<body class="bg-light">
 
-            <section class="landing-card-center">
-                <h1 class="tagline">TU MEJOR VERSIÓN</span><br>COMIENZA HOY</h1>
-                <p class="sub-tagline">Entrenamiento de élite, coaches certificados y tecnología al servicio de tus metas.</p>
-                
-                <div class="stats-bar">
-                    <div class="stat">
-                        <div class="stat-num">500+</div>
-                        <div class="stat-label">Socios Activos</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-num">12</div>
-                        <div class="stat-label">Coaches Expertos</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-num">30+</div>
-                        <div class="stat-label">Disciplinas</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-num">5★</div>
-                        <div class="stat-label">Valoración</div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top px-4 py-3 shadow-sm">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="../IMG/logo_empresa_letra_v1.png" alt="SportClub" height="40" class="me-2">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-center gap-3 fw-bold">
+                    <li class="nav-item"><a class="nav-link text-white" href="#sedes">Sedes</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#servicios">Servicios</a></li>
+                    <li class="nav-item"><a class="nav-link text-warning" href="#planes">Ver Planes</a></li>
+                    <li class="nav-item ms-lg-3">
+                        <a href="login.html" class="btn btn-outline-light rounded-pill px-4">Iniciar Sesión</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="register.html" class="btn btn-warning rounded-pill px-4 text-dark">Regístrate</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-commercial bg-dark text-white text-center py-5">
+        <div class="container">
+            <span class="badge bg-warning text-dark px-3 py-2 mb-3 fw-bold tracking-wide">NUEVA SEDE LA SERENA</span>
+            <h1 class="display-2 fw-bolder mb-3 text-uppercase">Tu gimnasio,<br>tus reglas</h1>
+            <p class="lead mb-5 fw-light w-75 mx-auto">Equipamiento de alto rendimiento, clases dirigidas y la mejor infraestructura. Inscríbete hoy con matrícula costo cero.</p>
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                <a href="#planes" class="btn btn-warning btn-lg rounded-pill px-5 fw-bold text-dark shadow">¡QUIERO ENTRENAR!</a>
+                <a href="#servicios" class="btn btn-outline-light btn-lg rounded-pill px-5 fw-bold">Conocer el gym</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="servicios" class="py-5 bg-white">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold h1">ENTRENA A OTRO NIVEL</h2>
+                <p class="text-muted">Diseñado para sacar tu máximo potencial</p>
+            </div>
+            
+            <div class="row g-4 text-center">
+                <div class="col-md-4">
+                    <div class="p-4 border rounded-4 bg-light h-100 shadow-sm transition-hover">
+                        <i class="bi bi-x-diamond-fill fs-1 text-warning mb-3 d-block"></i>
+                        <h4 class="fw-bold">Peso Libre y Máquinas</h4>
+                        <p class="text-muted small">Equipos biomecánicos de última generación, mancuernas hasta 50kg y racks olímpicos.</p>
                     </div>
                 </div>
-            </section>
-
-            <section class="info-grid">
-                <div class="info-card">
-                    <h2>¿Quiénes somos?</h2>
-                    <p>En SportClub creemos que el deporte transforma el cuerpo, la mente y el estilo de vida. Somos una comunidad enfocada en el bienestar, el compromiso y la superación personal.</p>
-                    <br>
-                    <p><strong class="highlight">Nuestra Visión:</strong> Ser el club referente en formación integral, combinando tecnología, entrenamiento y comunidad.</p>
+                <div class="col-md-4">
+                    <div class="p-4 border rounded-4 bg-light h-100 shadow-sm transition-hover">
+                        <i class="bi bi-heart-pulse-fill fs-1 text-danger mb-3 d-block"></i>
+                        <h4 class="fw-bold">Zona Cardio</h4>
+                        <p class="text-muted small">Trotadoras, elípticas y escaladoras con pantallas integradas para que no pierdas el ritmo.</p>
+                    </div>
                 </div>
-                <div class="info-card">
-                    <h2>Beneficios de Entrenar</h2>
-                    <ul>
-                        <li><strong>Acompañamiento experto</strong> en cada etapa de tu proceso.</li>
-                        <li><strong>Coaches especializados</strong> enfocados en tus metas.</li>
-                        <li><strong>Ambiente motivador</strong> diseñado para dar lo mejor.</li>
-                        <li><strong>Rutinas personalizadas</strong> según tu nivel y objetivos.</li>
-                        <li><strong>Tecnología integrada</strong> para monitorear tu progreso.</li>
+                <div class="col-md-4">
+                    <div class="p-4 border rounded-4 bg-light h-100 shadow-sm transition-hover">
+                        <i class="bi bi-people-fill fs-1 text-primary mb-3 d-block"></i>
+                        <h4 class="fw-bold">Clases Grupales</h4>
+                        <p class="text-muted small">Spinning, Zumba, CrossFit y Yoga. Más de 50 clases a la semana incluidas en tu plan.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="planes" class="py-5 bg-dark text-white">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold h1">ELIGE TU PLAN</h2>
+                <p class="text-warning">Sin contratos amarrados. Cancela cuando quieras.</p>
+            </div>
+
+            <div class="row justify-content-center g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100 border-0 rounded-4 shadow-lg text-dark transition-hover">
+                        <div class="card-header bg-light border-0 pt-4 pb-0 text-center">
+                            <h3 class="fw-bold text-uppercase h5 text-muted">Plan Base</h3>
+                            <div class="display-4 fw-bolder mt-3">$14.990<span class="fs-6 fw-normal text-muted">/mes</span></div>
+                        </div>
+                        <div class="card-body p-4">
+                            <ul class="list-unstyled mb-4">
+                                <li class="mb-3"><i class="bi bi-check2 text-success me-2 fw-bold"></i> Acceso a sede local</li>
+                                <li class="mb-3"><i class="bi bi-check2 text-success me-2 fw-bold"></i> Área de máquinas y peso libre</li>
+                                <li class="mb-3 text-muted"><i class="bi bi-x text-danger me-2 fw-bold"></i> Clases grupales</li>
+                                <li class="mb-3 text-muted"><i class="bi bi-x text-danger me-2 fw-bold"></i> Invitar a un amigo</li>
+                            </ul>
+                            <a href="register.html" class="btn btn-outline-dark w-100 rounded-pill fw-bold py-2">Elegir Plan Base</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100 border-2 border-warning rounded-4 shadow-lg text-white transition-hover" style="background-color: #1a1a1a;">
+                        <div class="card-header border-0 pt-4 pb-0 text-center position-relative" style="background-color: #1a1a1a;">
+                            <span class="badge bg-warning text-dark position-absolute top-0 start-50 translate-middle rounded-pill px-3 py-2">MÁS ELEGIDO</span>
+                            <h3 class="fw-bold text-uppercase h5 text-warning mt-2">Plan Black</h3>
+                            <div class="display-4 fw-bolder mt-3">$22.990<span class="fs-6 fw-normal opacity-50">/mes</span></div>
+                        </div>
+                        <div class="card-body p-4">
+                            <ul class="list-unstyled mb-4">
+                                <li class="mb-3"><i class="bi bi-check2 text-warning me-2 fw-bold"></i> Acceso a <strong>todas las sedes</strong></li>
+                                <li class="mb-3"><i class="bi bi-check2 text-warning me-2 fw-bold"></i> Área de máquinas y peso libre</li>
+                                <li class="mb-3"><i class="bi bi-check2 text-warning me-2 fw-bold"></i> Todas las clases grupales</li>
+                                <li class="mb-3"><i class="bi bi-check2 text-warning me-2 fw-bold"></i> Sillones de masajes</li>
+                                <li class="mb-3"><i class="bi bi-check2 text-warning me-2 fw-bold"></i> Invita a un amigo (5 pases/mes)</li>
+                            </ul>
+                            <a href="register.html" class="btn btn-warning text-dark w-100 rounded-pill fw-bold py-2 shadow">Unirse al Plan Black</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black text-white pt-5 pb-4">
+        <div class="container">
+            <div class="row g-4 border-bottom border-secondary pb-4 mb-4">
+                <div class="col-md-4">
+                    <img src="../IMG/logo_empresa_letra_v1.png" alt="SportClub" height="40" class="mb-3 opacity-75">
+                    <p class="small opacity-50">La cadena de gimnasios con mayor crecimiento. Innovación, tecnología y resultados reales.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="fw-bold mb-3">Enlaces Útiles</h5>
+                    <ul class="list-unstyled small opacity-75">
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none hover-warning">Reglamento interno</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none hover-warning">Trabaja con nosotros</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none hover-warning">Preguntas Frecuentes</a></li>
                     </ul>
                 </div>
-            </section>
-
-            <footer class="landing-card-footer">
-                <p>© 2026 SportClub — Todos los derechos reservados</p>
-                <div class="cta-group">
+                <div class="col-md-4 text-md-end">
+                    <h5 class="fw-bold mb-3">Síguenos</h5>
+                    <div class="d-flex justify-content-md-end gap-3 fs-5">
+                        <a href="#" class="text-white opacity-75 hover-warning"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="text-white opacity-75 hover-warning"><i class="bi bi-tiktok"></i></a>
+                        <a href="#" class="text-white opacity-75 hover-warning"><i class="bi bi-youtube"></i></a>
+                    </div>
                 </div>
-            </footer>
+            </div>
+            <div class="text-center small opacity-50">
+                <p class="mb-0">© 2026 SportClub. Todos los derechos reservados. Sede La Serena, Región de Coquimbo.</p>
+            </div>
         </div>
-    </main>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

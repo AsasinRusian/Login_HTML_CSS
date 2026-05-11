@@ -2,91 +2,253 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard Usuario - SportClub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socio SportClub — Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../css/user.css">
 </head>
 <body class="theme-user">
     <script>
+        // Verificación de sesión: redirige al login si no hay sesión activa
         const session = JSON.parse(sessionStorage.getItem('sc_user') || 'null');
-        if (!session || session.role !== 'usuario') window.location.href = 'login.html';
+        if (!session || session.role !== 'user') window.location.href = 'login.html';
     </script>
-    <header class="dash-header d-flex justify-content-between align-items-center p-3">
-        <img src="../IMG/logo_empresa_letra_v1.png" alt="SportClub" class="logo">
-        <h2 class="m-0 h5 text-white">Dashboard Socio</h2>
-        <nav class="d-flex gap-2">
-            <button id="btnEditarPerfil" class="btn btn-outline-light btn-sm">Editar Perfil</button>
-            <a href="../html/index.html" class="btn btn-light btn-sm">Cerrar Sesión</a>
-        </nav>
+
+    <header class="dash-header">
+        <div class="header-left">
+            <img src="../IMG/logo_empresa_letra_v1.png" alt="SportClub" class="logo">
+        </div>
+        <div class="header-center">
+            <span class="text-white fw-bold">Dashboard Socio</span>
+        </div>
+        <div class="header-right d-flex gap-2">
+            <button class="btn-editar-perfil-header" onclick="document.querySelector('[data-view=view-profile]').click()">Editar Perfil</button>
+            <a href="index.html" class="btn-cerrar-sesion">Cerrar Sesión</a>
+        </div>
     </header>
-    <nav class="main-nav">
-        <a href="#">Inicio</a> <a href="#">Clases</a> <a href="#">Reservas</a> <a href="#">Mi Progreso</a>
+
+    <nav class="main-nav" id="userNav">
+        <a href="#" class="active" data-view="view-home">Inicio</a>
+        <a href="#" data-view="view-clases">Clases</a>
+        <a href="#" data-view="view-reservas">Reservas</a>
+        <a href="#" data-view="view-progreso">Mi Progreso</a>
+        <a href="#" class="d-none" data-view="view-profile">Perfil</a>
     </nav>
-    <main class="container-fluid px-5 my-5">
-        <h4 class="h3 mb-4">Bienvenido a SportClub</h4> 
-        <section class="row g-4">
-            <article class="col-md-4">
-                <section class="card-dash h-100 p-4">
-                    <h3 class="h5 border-bottom pb-2 mb-3">MI PERFIL</h3>
-                    <p><strong>Email:</strong> Koffe@gmail.com</p>
-                    <p><strong>Objetivos:</strong> Bajar de peso, ganar resistencia.</p>
-                    <p class="small text-italic text-warning">Nivel: Principiante</p>
-                </section>
-            </article>
-            <article class="col-md-4">
-                <section class="card-dash h-100 p-4 text-center">
-                    <h3 class="h5 border-bottom pb-2 mb-3">PROGRESO</h3>
-                    <div class="circulo-progreso">75%</div>
-                    <p class="small text-muted mb-0">¡Vas por buen camino!</p>
-                </section>
-            </article>
-            <article class="col-md-4">
-                <section class="card-dash h-100 p-4">
-                    <h3 class="h5 border-bottom pb-2 mb-3">CLASES DISPONIBLES</h3>
-                    <ul class="list-unstyled">
-                        <li class="d-flex justify-content-between mb-2">Spinning <button class="btn btn-sm btn-dorado">Ir</button></li>
-                        <li class="d-flex justify-content-between mb-2">CrossFit <button class="btn btn-sm btn-dorado">Ir</button></li>
-                        <li class="d-flex justify-content-between">Boxeo <button class="btn btn-sm btn-dorado">Ir</button></li>
-                    </ul>
-                </section>
-            </article>
-        </section>
-        <section class="row mt-5">
-            <article class="col-12">
-                <section class="card-dash p-0 overflow-hidden">
-                    <h3 class="h5 p-3 m-0 bg-dark text-white">CLASES DISPONIBLES</h3>
-                    <table class="table table-striped table-hover m-0">
-                        <thead class="table-dark"><tr><th>Disciplina</th><th>Horarios</th><th>Días</th><th class="text-center">Acción</th></tr></thead>
+
+    <main class="container-fluid px-5 py-4">
+        
+        <section id="view-home" class="user-view">
+            <h1 class="h4 fw-bold mb-4">Bienvenido, <span id="welcome_name">Socio</span></h1>
+            <div class="row g-4 mb-4">
+                <article class="col-md-4">
+                    <div class="card card-custom p-4">
+                        <h4 class="h6 fw-bold border-bottom pb-2 mb-3">MI PERFIL</h4>
+                        <div class="small">
+                            <p class="mb-2"><strong>Email:</strong> <span id="dash_email">Koffe@gmail.com</span></p>
+                            <p class="mb-2"><strong>Objetivos:</strong> Bajar de peso, ganar resistencia.</p>
+                            <p class="mb-0"><strong>Nivel:</strong> Principiante</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="col-md-4">
+                    <div class="card card-custom p-4 text-center">
+                        <h4 class="h6 fw-bold border-bottom pb-2 mb-3">PROGRESO</h4>
+                        <div class="circulo-progreso-container my-2">
+                            <div class="circulo-progreso-v2">75%</div>
+                        </div>
+                        <p class="small fst-italic mb-0">¡Casi llegas a tu meta!</p>
+                    </div>
+                </article>
+
+                <article class="col-md-4">
+                    <div class="card card-custom p-4">
+                        <h4 class="h6 fw-bold border-bottom pb-2 mb-3">RESERVAS RÁPIDAS</h4>
+                        <ul class="list-unstyled mb-0">
+                            <li class="d-flex justify-content-between align-items-center mb-2 small">
+                                Spinning <button class="btn btn-warning btn-tiny">Ir</button>
+                            </li>
+                            <li class="d-flex justify-content-between align-items-center mb-2 small">
+                                CrossFit <button class="btn btn-warning btn-tiny">Ir</button>
+                            </li>
+                            <li class="d-flex justify-content-between align-items-center small">
+                                Boxeo <button class="btn btn-warning btn-tiny">Ir</button>
+                            </li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+
+            <section class="card card-table shadow-sm">
+                <header class="p-3 bg-dark text-white rounded-top">
+                    <h5 class="h6 fw-bold m-0">CLASES DISPONIBLES</h5>
+                </header>
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0 small">
+                        <thead class="table-light text-muted">
+                            <tr>
+                                <th>Disciplina</th>
+                                <th>Horarios</th>
+                                <th>Días</th>
+                                <th class="text-center">Acción</th>
+                            </tr>
+                        </thead>
                         <tbody>
-                            <tr><td>Spinning</td><td>10:00 / 18:00</td><td>Lunes</td><td class="text-center"><button class="btn-dorado">Reservar</button></td></tr>
-                            <tr><td>CrossFit</td><td>10:00</td><td>Miércoles</td><td class="text-center"><button class="btn-dorado">Reservar</button></td></tr>
-                            <tr><td>Boxeo</td><td>19:00</td><td>Viernes</td><td class="text-center"><button class="btn-dorado">Reservar</button></td></tr>
+                            <tr>
+                                <td class="fw-bold">Spinning</td>
+                                <td>10:00 / 18:00</td>
+                                <td>Lunes</td>
+                                <td class="text-center"><button class="btn btn-warning btn-sm fw-bold">Reservar</button></td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">CrossFit</td>
+                                <td>10:00</td>
+                                <td>Miércoles</td>
+                                <td class="text-center"><button class="btn btn-warning btn-sm fw-bold">Reservar</button></td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">Boxeo</td>
+                                <td>19:00</td>
+                                <td>Viernes</td>
+                                <td class="text-center"><button class="btn btn-warning btn-sm fw-bold">Reservar</button></td>
+                            </tr>
                         </tbody>
                     </table>
+                </div>
+            </section>
+        </section>
+
+        <section id="view-profile" class="user-view d-none">
+            <nav aria-label="breadcrumb" class="mb-3">
+                <ol class="breadcrumb small">
+                    <li class="breadcrumb-item"><a href="#" class="text-decoration-none" onclick="document.querySelector('[data-view=view-home]').click()">Inicio</a></li>
+                    <li class="breadcrumb-item active">Perfil</li>
+                </ol>
+            </nav>
+
+            <header class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <h1 class="h3 fw-bold m-0">Mi Perfil</h1>
+                    <p class="text-muted m-0 small">Gestiona tu información personal y preferencias de cuenta.</p>
+                </div>
+                <button class="btn btn-primary fw-bold btn-sm px-3" id="btnEditHeader">
+                    <i class="bi bi-pencil me-1"></i> Editar Perfil
+                </button>
+            </header>
+
+            <div class="row g-4">
+                <aside class="col-md-4 col-lg-3">
+                    <section class="card card-dash text-center p-4 shadow-sm border-0">
+                        <div class="mb-3">
+                            <img src="../IMG/jax.jpg" alt="Foto" id="profileImg">
+                        </div>
+                        <h2 class="h4 fw-bold mb-1" id="display_name">Demo User 1</h2>
+                        <p class="small text-muted mb-3">Usuario del Sistema</p>
+                        <span class="badge badge-user mb-4">user</span>
+
+                        <div class="text-start border-top pt-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="bi bi-envelope text-muted me-3"></i>
+                                <div><small class="text-muted d-block lh-1">Email</small><span class="small" id="display_email">user1@demo.cl</span></div>
+                            </div>
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="bi bi-calendar-event text-muted me-3"></i>
+                                <div><small class="text-muted d-block lh-1">Fecha de nacimiento</small><span class="small">12/05/1995</span></div>
+                            </div>
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="bi bi-shield-lock text-muted me-3"></i>
+                                <div><small class="text-muted d-block lh-1">Rol</small><span class="badge badge-user small">user</span></div>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-clock-history text-muted me-3"></i>
+                                <div><small class="text-muted d-block lh-1">Fecha de registro</small><span class="small">12/05/2024</span></div>
+                            </div>
+                        </div>
+                    </section>
+                </aside>
+
+                <section class="col-md-8 col-lg-9">
+                    <div class="card card-dash mb-4 p-4 shadow-sm border-0">
+                        <h3 class="h5 fw-bold mb-4 border-bottom pb-2">Información Personal</h3>
+                        <form id="profileForm" novalidate>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label small fw-bold">Nombre completo *</label>
+                                    <input type="text" id="full_name" class="form-control form-control-sm" value="Demo User 1">
+                                    <div class="error-msg" id="err_full_name"></div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label small fw-bold">Email *</label>
+                                    <input type="email" id="email" class="form-control form-control-sm" value="user1@demo.cl">
+                                    <div class="error-msg" id="err_email"></div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label small fw-bold">Fecha de nacimiento *</label>
+                                    <input type="date" id="birth_date" class="form-control form-control-sm" value="1995-05-12">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label small fw-bold">Deporte favorito</label>
+                                    <input type="text" id="fav_sport" class="form-control form-control-sm" value="Fútbol">
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label small fw-bold">Información adicional<span class="fw-normal text-muted"> (intereses, habilidades, etc.)</span></label>
+                                    <textarea id="metadata" class="form-control form-control-sm" rows="3">Me interesa el análisis de rendimiento y la nutrición deportiva.</textarea>
+                                </div>
+                                <div class="col-12 text-end pt-3">
+                                    <button type="button" class="btn btn-outline-secondary btn-sm me-2 px-3">Cancelar</button>
+                                    <button type="submit" class="btn btn-success btn-sm px-4 fw-bold"><i class="bi bi-check2"></i> Guardar cambios</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="card card-dash p-4 shadow-sm border-0">
+                        <h3 class="h5 fw-bold mb-4 border-bottom pb-2">Cambiar Contraseña</h3>
+                        <form id="passwordForm" novalidate>
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <label class="form-label small fw-bold">Contraseña actual *</label>
+                                    <div class="input-group input-group-sm">
+                                        <input type="password" id="current_pass" class="form-control" placeholder="Ingresa tu contraseña actual">
+                                        <span class="input-group-text bg-white"><i class="bi bi-eye"></i></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label small fw-bold">Nueva contraseña *</label>
+                                    <div class="input-group input-group-sm">
+                                        <input type="password" id="new_pass" class="form-control" placeholder="Mínimo 8 caracteres">
+                                        <span class="input-group-text bg-white"><i class="bi bi-eye"></i></span>
+                                    </div>
+                                    <div class="error-msg" id="err_new_pass"></div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label small fw-bold">Confirmar nueva contraseña *</label>
+                                    <div class="input-group input-group-sm">
+                                        <input type="password" id="confirm_pass" class="form-control" placeholder="Repite tu nueva contraseña">
+                                        <span class="input-group-text bg-white"><i class="bi bi-eye"></i></span>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="alert alert-info border-0 py-2 d-flex align-items-center mb-0" style="font-size: 11px;">
+                                        <i class="bi bi-info-circle me-2 fs-6"></i>
+                                        La contraseña debe tener al menos 8 caracteres, incluir números y letras.
+                                    </div>
+                                </div>
+                                <div class="col-12 text-end">
+                                    <button type="submit" class="btn btn-primary btn-sm px-4 fw-bold">
+                                        <i class="bi bi-lock me-1"></i> Actualizar contraseña
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </section>
-            </article>
+            </div>
         </section>
     </main>
-    <div class="modal fade" id="modalProximamente" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content bg-dark border-warning">
-                <div class="modal-header border-warning text-warning">
-                    <h5 class="modal-title fw-bold">SportClub Informa</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body text-white text-center py-4">
-                    <p class="modal-text-custom fw-bold">¡Hola, Socio!</p> 
-                    <p class="modal-text-custom">La edición de perfil estará <strong>disponible próximamente</strong>.</p>
-                </div>
-                <div class="modal-footer border-0"><button type="button" class="btn btn-warning fw-bold w-100" data-bs-dismiss="modal">Entendido</button></div>
-            </div>
-        </div>
-    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        const btnEditar = document.getElementById('btnEditarPerfil');
-        const modalElement = new bootstrap.Modal(document.getElementById('modalProximamente'));
-        btnEditar.addEventListener('click', () => modalElement.show());
-    </script>
+    <script src="../js/profile.js"></script>
 </body>
 </html>

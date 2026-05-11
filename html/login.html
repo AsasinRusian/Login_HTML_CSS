@@ -2,98 +2,21 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acceso — SportClub</title>
     <link rel="stylesheet" href="../css/Style.Css">
 </head>
 <body>
     <div class="card">
-        <div class="logo-wrap">
-            <img src="../IMG/logo_empresa_letra_v1.png" alt="SportClub">
-        </div>
+        <div class="logo-wrap"><img src="../IMG/logo_empresa_letra_v1.png" alt="SportClub"></div>
         <h1 class="card-title">Bienvenido</h1>
-        <p class="card-subtitle">Ingresa tus credenciales para acceder al sistema</p>
-
         <div class="error-box" id="errorMsg"></div>
-
         <form id="loginForm">
-            <div class="field">
-                <label for="email">Correo electrónico</label>
-                <input type="email" id="email" placeholder="nombre@correo.com" autocomplete="email" required>
-            </div>
-            <div class="field">
-                <label for="password">Contraseña</label>
-                <input type="password" id="password" placeholder="••••••••" autocomplete="current-password" required>
-            </div>
+            <div class="field"><label>Correo</label><input type="email" id="email" required></div>
+            <div class="field"><label>Contraseña</label><input type="password" id="password" required></div>
             <button type="submit" class="btn-submit" id="submitBtn">Iniciar Sesión</button>
         </form>
-
-        <div class="links">
-            <a href="recover.html">¿Olvidaste tu contraseña?</a>
-            <div class="divider"></div>
-            <a href="register.html">¿No tienes cuenta? <strong>Regístrate aquí</strong></a>
-            <a href="index.html">← Volver al inicio</a>
-        </div>
-
-        <div class="demo-panel">
-            <p>Cuentas de demostración</p>
-            <button class="demo-btn" onclick="fillDemo('usuario@sportclub.com','user123')">
-                <span class="role-badge badge-user">Socio</span>
-                usuario@sportclub.com <span>/ user123</span>
-            </button>
-            <button class="demo-btn" onclick="fillDemo('coach@sportclub.com','coach123')">
-                <span class="role-badge badge-coach">Coach</span>
-                coach@sportclub.com <span>/ coach123</span>
-            </button>
-            <button class="demo-btn" onclick="fillDemo('admin@sportclub.com','admin123')">
-                <span class="role-badge badge-admin">Admin</span>
-                admin@sportclub.com <span>/ admin123</span>
-            </button>
-        </div>
+        <div class="links"><a href="register.html">¿No tienes cuenta? Regístrate</a><a href="index.html">Inicio</a></div>
     </div>
-
-    <script>
-        const LOCAL_USERS = {
-            'usuario@sportclub.com': { password: 'user123', role: 'usuario', redirect: 'user.html' },
-            'coach@sportclub.com':   { password: 'coach123', role: 'coach',   redirect: 'coach.html' },
-            'admin@sportclub.com':   { password: 'admin123', role: 'admin',   redirect: 'admin.html' },
-        };
-
-        function showError(msg) {
-            const el = document.getElementById('errorMsg');
-            el.textContent = msg;
-            el.style.display = 'block';
-        }
-        function hideError() { document.getElementById('errorMsg').style.display = 'none'; }
-
-        function fillDemo(email, pw) {
-            document.getElementById('email').value = email;
-            document.getElementById('password').value = pw;
-            hideError();
-        }
-
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            hideError();
-            const btn = document.getElementById('submitBtn');
-            btn.classList.add('loading');
-            btn.textContent = 'Verificando...';
-
-            const email = document.getElementById('email').value.trim().toLowerCase();
-            const password = document.getElementById('password').value;
-
-            setTimeout(() => {
-                const user = LOCAL_USERS[email];
-                if (user && user.password === password) {
-                    sessionStorage.setItem('sc_user', JSON.stringify({ email, role: user.role }));
-                    window.location.href = user.redirect;
-                } else {
-                    showError('Correo o contraseña incorrectos.');
-                    btn.classList.remove('loading');
-                    btn.textContent = 'Iniciar Sesión';
-                }
-            }, 800);
-        });
-    </script>
+    <script src="../js/auth.js"></script>
 </body>
 </html>
